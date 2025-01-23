@@ -667,6 +667,7 @@ GameObject:
   - component: {fileID: 1080317014}
   - component: {fileID: 1080317013}
   - component: {fileID: 1080317015}
+  - component: {fileID: 1080317016}
   m_Layer: 0
   m_Name: Enemy Ranged
   m_TagString: Untagged
@@ -738,6 +739,22 @@ MonoBehaviour:
   maxCoverTime: 2
   minOpenTime: 1
   maxOpenTime: 3
+--- !u!114 &1080317016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080317011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d44e6849bd84fe587a085dd063a5b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  attackPower: 5
+  attackSpeed: 1
+  moveSpeed: 3
 --- !u!1 &1261936476
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,6 +896,7 @@ GameObject:
   - component: {fileID: 1275387641}
   - component: {fileID: 1275387640}
   - component: {fileID: 1275387642}
+  - component: {fileID: 1275387643}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -945,6 +963,22 @@ MonoBehaviour:
   player: {fileID: 2038981239}
   speed: 2.5
   stopDistance: 1
+--- !u!114 &1275387643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275387639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d44e6849bd84fe587a085dd063a5b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  attackPower: 5
+  attackSpeed: 1
+  moveSpeed: 3
 --- !u!1 &1647224159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,6 +1105,7 @@ GameObject:
   - component: {fileID: 2038981239}
   - component: {fileID: 2038981238}
   - component: {fileID: 2038981240}
+  - component: {fileID: 2038981241}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1135,6 +1170,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+--- !u!114 &2038981241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038981237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db1f83c25da25446c9b1e6c01de39d4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  minHealth: 0
+  currentHealth: 0
+  attackPower: 10
+  minAttackPower: 1
+  maxAttackPower: 50
+  attackSpeed: 1
+  minAttackSpeed: 0.5
+  maxAttackSpeed: 2
+  moveSpeed: 5
+  minMoveSpeed: 1
+  maxMoveSpeed: 10
 --- !u!1 &2072163539
 GameObject:
   m_ObjectHideFlags: 0
