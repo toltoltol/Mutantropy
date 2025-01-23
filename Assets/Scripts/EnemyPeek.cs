@@ -14,10 +14,8 @@ public class EnemyPeek : MonoBehaviour
 
     private Transform targetPosition;  // Current target position (cover or open)
 
-    private EnemyAttributes enemyAttributes;
     public bool isPeeking = false;    // Whether the enemy is currently peeking
     private EnemyAttributes enemyAttributes;
-    public bool isPeeking = false;    // Whether the enemy is currently peeking
 
     private void Start()
     {
