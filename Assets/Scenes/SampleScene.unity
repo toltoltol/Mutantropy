@@ -734,11 +734,10 @@ MonoBehaviour:
   coverPosition: {fileID: 726694905}
   openPosition1: {fileID: 236784578}
   openPosition2: {fileID: 1647224160}
-  moveSpeed: 4
-  minCoverTime: 1
-  maxCoverTime: 2
-  minOpenTime: 1
-  maxOpenTime: 3
+  minCoverTime: 2
+  maxCoverTime: 5
+  minOpenTime: 2
+  maxOpenTime: 5
 --- !u!114 &1080317016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -751,10 +750,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06d44e6849bd84fe587a085dd063a5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
-  attackPower: 5
-  attackSpeed: 1
-  moveSpeed: 3
+  health: 3
+  attackPower: 1
+  attackSpeed: 0.5
+  moveSpeed: 0.5
 --- !u!1 &1261936476
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,8 +960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2038981239}
-  speed: 2.5
-  stopDistance: 1
+  stopDistance: 2
 --- !u!114 &1275387643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -975,10 +973,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06d44e6849bd84fe587a085dd063a5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
-  attackPower: 5
-  attackSpeed: 1
-  moveSpeed: 3
+  health: 3
+  attackPower: 1
+  attackSpeed: 0.5
+  moveSpeed: 0.5
+--- !u!1 &1540992282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1540992284}
+  - component: {fileID: 1540992283}
+  m_Layer: 0
+  m_Name: GameMaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1540992283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540992282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17aa0dd8a46524c9c8045f0280f674e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerMoveSpeedMultiplier: 5
+  EnemyMoveSpeedMultiplier: 5
+--- !u!4 &1540992284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540992282}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.14903428, y: 0.12988992, z: 0.107088715}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1647224159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,7 +1213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b93f2fd3b634a7d9f2f8abb71de0b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
 --- !u!114 &2038981241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1182,18 +1225,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db1f83c25da25446c9b1e6c01de39d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  minHealth: 0
-  currentHealth: 0
-  attackPower: 10
-  minAttackPower: 1
-  maxAttackPower: 50
+  maxHealth: 12
+  minHealth: 1
+  currentHealth: 3
+  attackPower: 1
+  minAttackPower: 0.1
+  maxAttackPower: 1000
   attackSpeed: 1
   minAttackSpeed: 0.5
   maxAttackSpeed: 2
-  moveSpeed: 5
-  minMoveSpeed: 1
-  maxMoveSpeed: 10
+  moveSpeed: 1
+  minMoveSpeed: 0.5
+  maxMoveSpeed: 2
 --- !u!1 &2072163539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,6 +1411,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
+  - {fileID: 1540992284}
   - {fileID: 2038981239}
   - {fileID: 1275387641}
   - {fileID: 1080317014}
