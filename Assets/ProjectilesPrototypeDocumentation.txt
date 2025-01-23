@@ -1,0 +1,16 @@
+# What you are trying to achieve?
+Player controlled projectile firing 
+and enemy automatic projectile firing with rudimentary aim bot 
+
+# Who worked on the prototype?
+Toby
+
+# How long the prototype took to complete.
+
+
+# What decisions did you make based on the prototype? What worked, what didn't?
+Implemented controls as arrow keys for controlling shooting action and direction. 
+ 
+
+
+# What new questions / prototypes arose from this one?

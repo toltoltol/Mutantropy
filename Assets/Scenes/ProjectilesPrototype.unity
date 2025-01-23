@@ -667,6 +667,7 @@ GameObject:
   - component: {fileID: 1080317014}
   - component: {fileID: 1080317013}
   - component: {fileID: 1080317015}
+  - component: {fileID: 1080317016}
   m_Layer: 0
   m_Name: Enemy Ranged
   m_TagString: Untagged
@@ -738,6 +739,23 @@ MonoBehaviour:
   maxCoverTime: 2
   minOpenTime: 1
   maxOpenTime: 3
+--- !u!114 &1080317016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080317011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e953e2ac28f4b56b9462914d0b596d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRangedEnemy: 1
+  projectilePrefab: {fileID: 6705652931990581667, guid: 39821717a7c794d8a827a5c1c49860d0, type: 3}
+  player: {fileID: 2038981239}
+  autoShootProbability: 0
+  fireCooldownTime: 0.5
 --- !u!1 &1261936476
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,6 +897,7 @@ GameObject:
   - component: {fileID: 1275387641}
   - component: {fileID: 1275387640}
   - component: {fileID: 1275387642}
+  - component: {fileID: 1275387643}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -945,6 +964,23 @@ MonoBehaviour:
   player: {fileID: 2038981239}
   speed: 2.5
   stopDistance: 1
+--- !u!114 &1275387643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275387639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e953e2ac28f4b56b9462914d0b596d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRangedEnemy: 0
+  projectilePrefab: {fileID: 6705652931990581667, guid: 39821717a7c794d8a827a5c1c49860d0, type: 3}
+  player: {fileID: 2038981239}
+  autoShootProbability: 0.01
+  fireCooldownTime: 0.8
 --- !u!1 &1647224159
 GameObject:
   m_ObjectHideFlags: 0

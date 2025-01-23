@@ -15,9 +15,14 @@ public class EnemyPeek : MonoBehaviour
 
     private Transform targetPosition;  // Current target position (cover or open)
     private bool isPeeking = false;    // Whether the enemy is currently peeking
+    
+    private EnemyAttack enemyAttack; // Reference to the EnemyAttack script
 
     private void Start()
     {
+        // I forgot this took me a long time to realise why nothing worked lol
+        enemyAttack = GetComponent<EnemyAttack>();
+
         // Start in cover by default
         targetPosition = coverPosition;
         StartCoroutine(PeekBehavior());
@@ -29,6 +34,12 @@ public class EnemyPeek : MonoBehaviour
         if (targetPosition != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition.position, moveSpeed * Time.deltaTime);
+        }
+        
+        // Look if this works is it a problem 🤪
+        if (transform.position == openPosition1.position || transform.position == openPosition2.position)
+        {
+            enemyAttack.Shoot();
         }
     }
 
