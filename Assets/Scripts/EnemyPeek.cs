@@ -18,6 +18,7 @@ public class EnemyPeek : MonoBehaviour
     private EnemyAttributes enemyAttributes;
     public bool isPeeking = false;    // Whether the enemy is currently peeking
     private EnemyAttributes enemyAttributes;
+    public bool isPeeking = false;    // Whether the enemy is currently peeking
 
     private void Start()
     {
