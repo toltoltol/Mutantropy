@@ -2,55 +2,59 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public GameObject projectilePrefab; // Assign the projectile prefab in the Inspector
-    public float projectileSpeed = 10f; // Speed of the projectile
-    public Transform firePoint; // Empty child GameObject marking the spawn position
-    
-    public float fireCooldown = 0.2f; // Cooldown time in seconds
+    public GameObject projectilePrefab;
+    public float projectileSpeed = 10f;
+    public Transform firePoint;
+    public float fireCooldown = 0.3f;
     private float nextFireTime = 0f;
 
+    // Buffer to store key presses
+    public float inputBufferTime = 0.05f; // Time window for buffering inputs
+    private float inputTimer = 0f; // Timer for the input buffer
+    private float horizontalInput = 0f; // Accumulated horizontal input
+    private float verticalInput = 0f; // Accumulated vertical input
 
     void Update()
     {
+        
         if (Time.time >= nextFireTime)
         {
-            Vector2 direction = GetInputDirection();
+            // Accumulate input over the buffer time
+            inputTimer += Time.deltaTime;
 
-            if (direction != Vector2.zero)
+            if (inputTimer >= inputBufferTime)
             {
-                FireProjectile(direction);
-                nextFireTime = Time.time + fireCooldown;
+                Vector2 direction = new Vector2(horizontalInput, verticalInput);
+                if (direction != Vector2.zero)
+                {
+                    FireProjectile(direction.normalized);
+                    nextFireTime = Time.time + fireCooldown;
+                }
+
+                // Reset input after processing
+                horizontalInput = 0f;
+                verticalInput = 0f;
+                inputTimer = 0f;
             }
+
+            // Update the input values during the buffer time
+            horizontalInput += (Input.GetKey(KeyCode.RightArrow) ? 1f : 0f) + (Input.GetKey(KeyCode.LeftArrow) ? -1f : 0f);
+            verticalInput += (Input.GetKey(KeyCode.UpArrow) ? 1f : 0f) + (Input.GetKey(KeyCode.DownArrow) ? -1f : 0f);
         }
     }
 
-    Vector2 GetInputDirection()
+    void FireProjectile(Vector2 direction)
     {
-        float horizontal = (Input.GetKey(KeyCode.RightArrow) ? 1f : 0f) + (Input.GetKey(KeyCode.LeftArrow) ? -1f : 0f);
-        float vertical = (Input.GetKey(KeyCode.UpArrow) ? 1f : 0f) + (Input.GetKey(KeyCode.DownArrow) ? -1f : 0f);
-
-        // Create and normalize the direction vector
-        Vector2 direction = new Vector2(horizontal, vertical);
-
-        // Normalize if diagonal movement is detected
+        // Normalize the direction vector before firing
         if (direction.sqrMagnitude > 1)
         {
             direction.Normalize();
         }
 
-        return direction;
-    }
-
-    void FireProjectile(Vector2 direction)
-    {
-        // Instantiate the projectile at the firePoint position
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        
-        // Try to get the BulletProjectile script on the instantiated projectile
         BulletProjectile bulletProjectile = projectile.GetComponent<BulletProjectile>();
         if (bulletProjectile != null)
         {
-            // Call the method to set the direction
             bulletProjectile.SetDirection(direction);
         }
     }
