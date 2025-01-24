@@ -1,0 +1,31 @@
+# What you are trying to achieve?
+Player controlled projectile firing 
+and enemy automatic projectile firing with rudimentary aim bot 
+
+# Who worked on the prototype?
+Toby
+
+# How long the prototype took to complete.
+3 hours
+
+
+# What decisions did you make based on the prototype? What worked, what didn't?
+Implemented controls as arrow keys for controlling shooting action and direction. 
+- This proved to be more complex than expected as reading 2 keys at the same time 
+  doesn't work well when just sampling for both keys during update (1 frame) 
+- It is really fun and feels good using wasd for movement arrow keys for attacking
+- The direction shots move in can feel off when moving in shooting direction
+
+Implemented shooting for both enemy types (ranged and close)
+- It works they shoot at the player and the script isn't impossible for a designer to use
+- What didn't work well was trying include player movement into where enemies aim
+  the issue being im not sure how to expose player movement to the enemy gameobjects scripts 
+
+# What new questions / prototypes arose from this one?
+Solving the aimbot problem
+- Id like to make prototypes testing different ways of passing player movement direction 
+to enemy scripts to allow them to aim at where the player is going
+-- Either by just reading input keys in enemy attack scripts and estimating players movement
+-- Or by exposing more of player script to enemy gameobjects scripts
+
+  
