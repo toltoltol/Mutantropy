@@ -13,6 +13,8 @@ public class EnemyPeek : MonoBehaviour
     public float maxOpenTime = 5f;     // Maximum time spent in the open
 
     private Transform targetPosition;  // Current target position (cover or open)
+
+    public bool isPeeking = false;    // Whether the enemy is currently peeking
     private EnemyAttributes enemyAttributes;
 
     private void Start()
@@ -44,10 +46,12 @@ public class EnemyPeek : MonoBehaviour
         while (true)
         {
             // Stay in cover for a random amount of time
+            isPeeking = false;
             targetPosition = coverPosition;
             yield return new WaitForSeconds(Random.Range(minCoverTime, maxCoverTime));
 
             // Randomly choose between the two open positions
+            isPeeking = true;
             targetPosition = Random.value > 0.5f ? openPosition1 : openPosition2;
             yield return new WaitForSeconds(Random.Range(minOpenTime, maxOpenTime));
         }
