@@ -3,15 +3,24 @@ using UnityEngine;
 public class EnemyFollow : MonoBehaviour
 {
     public Transform player;       // Reference to the player's Transform
-    public float speed = 5f;       // Speed at which the enemy moves
-    public float stopDistance = 2f; // Distance to stop from the player
+    public float stopDistance = 1f; // Distance to stop from the player
+
+    private EnemyAttributes enemyAttributes;
+
+    private void Awake()
+    {
+        enemyAttributes = GetComponent<EnemyAttributes>();
+        if (enemyAttributes == null)
+        {
+            Debug.LogError("EnemyAttributes component is missing on this enemy.");
+        }
+    }
 
     void Update()
     {
         // Check if the player reference is set
-        if (player == null)
+        if (player == null || enemyAttributes == null)
         {
-            Debug.LogWarning("Player not assigned to the enemy.");
             return;
         }
 
@@ -25,7 +34,7 @@ public class EnemyFollow : MonoBehaviour
             Vector3 direction = (player.position - transform.position).normalized;
 
             // Move the enemy in the direction of the player
-            transform.position += direction * speed * Time.deltaTime;
+            transform.position += direction * enemyAttributes.moveSpeed * GameMaster.GetEnemyMoveSpeedMultiplier() * Time.deltaTime;
         }
     }
 }
