@@ -28,7 +28,8 @@ public class Mutagen : MonoBehaviour
             Debug.Log("Mutagen applied! Effect: " + effect);
 
             // Example: Update player's speed
-            PlayerController player = other.GetComponent<PlayerController>();
+            
+            PlayerMovement player = other.GetComponent<PlayerMovement>();
             if (player != null)
             {
                 player.moveSpeed += effect;

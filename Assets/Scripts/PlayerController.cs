@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerAttributes playerAttributes;
 
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
