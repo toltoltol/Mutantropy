@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 //Stolen from COSC360 SpaceInvadors lab 
 public class EnemyAttack : MonoBehaviour {
@@ -14,6 +16,8 @@ public class EnemyAttack : MonoBehaviour {
     public GameObject projectilePrefab;
 
     public Transform player;
+
+    private EnemyPeek enemyPeek;
    
     // Probability of auto-shoot (0 if
     // no autoshoot)
@@ -24,7 +28,12 @@ public class EnemyAttack : MonoBehaviour {
    
     // How much time is left until able to fire again 
     float fireCooldownTimeLeft = 0;
-      
+
+    private void Start()
+    {
+        enemyPeek = GetComponent<EnemyPeek>();
+    }
+
     // Per every frame...
     void Update () { 
         // If still some time left until can fire again
@@ -35,7 +44,11 @@ public class EnemyAttack : MonoBehaviour {
         }
         
         //lol skip everything else if it is ranged enemy
-        if (isRangedEnemy) {return;}
+        if (isRangedEnemy)
+        {
+            if (transform.position == enemyPeek.openPosition1.position || transform.position == enemyPeek.openPosition2.position) { Shoot();}
+            return; // Exit point if ranged enenemy
+        }
       
         // Generate number a random number between 0 and 1
         float randomSample = Random.Range(0f, 1f);
