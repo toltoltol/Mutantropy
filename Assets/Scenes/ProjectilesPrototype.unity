@@ -1187,6 +1187,7 @@ GameObject:
   - component: {fileID: 2038981238}
   - component: {fileID: 2038981240}
   - component: {fileID: 2038981241}
+  - component: {fileID: 2038981242}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1268,6 +1269,30 @@ MonoBehaviour:
   firePoint: {fileID: 2109192744}
   fireCooldown: 0.3
   inputBufferTime: 0.05
+--- !u!114 &2038981242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038981237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db1f83c25da25446c9b1e6c01de39d4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 12
+  minHealth: 1
+  currentHealth: 3
+  attackPower: 1
+  minAttackPower: 0.1
+  maxAttackPower: 1000
+  attackSpeed: 1
+  minAttackSpeed: 0.5
+  maxAttackSpeed: 2
+  moveSpeed: 1
+  minMoveSpeed: 0.5
+  maxMoveSpeed: 2
 --- !u!1 &2072163539
 GameObject:
   m_ObjectHideFlags: 0
