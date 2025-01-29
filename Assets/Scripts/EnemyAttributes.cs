@@ -8,6 +8,15 @@ public class EnemyAttributes : MonoBehaviour
     public float attackSpeed = 0.5f;
     public float moveSpeed = 0.5f;
 
+    // Get final move speed
+    public float FinalMoveSpeed
+    {
+        get
+        {
+            return moveSpeed * GameMaster.GetEnemyMoveSpeedMultiplier();
+        }
+    }
+
     // Handle taking damage
     public void TakeDamage(float damage)
     {
