@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
 public class PlayerAttributes : MonoBehaviour
 {
     // Player stats with boundaries
     public int maxHealth = 12;
-    public int minHealth = 1;
+    public int minHealth = 0;
     public int currentHealth = 3;
 
     public float attackPower = 1.0f;
@@ -56,5 +57,14 @@ public class PlayerAttributes : MonoBehaviour
     {
         Debug.Log("Player has died.");
         // Add death handling logic (e.g., respawn or game over)
+    }
+    
+    //I'm slapping the collision handling in here but im not entirely sure that is correct
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("ProjectileBase"))
+        {
+            TakeDamage(1);
+        }
     }
 }
