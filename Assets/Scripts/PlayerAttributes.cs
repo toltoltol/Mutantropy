@@ -15,17 +15,28 @@ public class PlayerAttributes : MonoBehaviour
     public float attackSpeed = 1.0f;
     public float minAttackSpeed = 0.5f;
     public float maxAttackSpeed = 2.0f;
+    
+    //Measured in seconds the projectile exists for
+    public float attackRange = 5.0f;
+    public float minAttackRange = 0.5f;
+    public float maxAttackRange = 10.0f;
+    
+    public float attackProjectileSpeed = 5.0f;
+    public float minAttackProjectileSpeed = 0.5f;
+    public float maxAttackProjectileSpeed = 10.0f;
 
     public float moveSpeed = 1.0f;
     public float minMoveSpeed = 0.5f;
     public float maxMoveSpeed = 2.0f;
-
+    
     private void Start()
     {
         // Initialize player health
         currentHealth = Mathf.Clamp(maxHealth, minHealth, maxHealth);
         attackPower = Mathf.Clamp(attackPower, minAttackPower, maxAttackPower);
         attackSpeed = Mathf.Clamp(attackSpeed, minAttackSpeed, maxAttackSpeed);
+        attackRange = Mathf.Clamp(attackRange, minAttackRange, maxAttackRange);
+        attackProjectileSpeed = Mathf.Clamp(attackProjectileSpeed, minAttackProjectileSpeed, maxAttackProjectileSpeed);
         moveSpeed = Mathf.Clamp(moveSpeed, minMoveSpeed, maxMoveSpeed);
     }
 

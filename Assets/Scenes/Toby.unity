@@ -917,6 +917,7 @@ GameObject:
   - component: {fileID: 1265146642}
   - component: {fileID: 1265146640}
   - component: {fileID: 1265146639}
+  - component: {fileID: 1265146644}
   m_Layer: 0
   m_Name: Enemy Advanced
   m_TagString: Untagged
@@ -997,6 +998,23 @@ Transform:
   - {fileID: 1106320232}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1265146644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265146638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce3bc62f263740b4bd1231d8f165a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRangedEnemy: 0
+  projectilePrefab: {fileID: 6705652931990581667, guid: c48f85295fd5c452badd6fcd3f1d4691, type: 3}
+  player: {fileID: 2128474339}
+  autoShootProbability: 0.5
+  fireCooldownTime: 2
 --- !u!1 &1273765898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,6 +1374,12 @@ MonoBehaviour:
   attackSpeed: 1
   minAttackSpeed: 0.5
   maxAttackSpeed: 2
+  attackRange: 5
+  minAttackRange: 0.5
+  maxAttackRange: 10
+  attackProjectileSpeed: 5
+  minAttackProjectileSpeed: 0.5
+  maxAttackProjectileSpeed: 10
   moveSpeed: 1
   minMoveSpeed: 0.5
   maxMoveSpeed: 2
@@ -1384,7 +1408,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 6705652931990581667, guid: c48f85295fd5c452badd6fcd3f1d4691, type: 3}
-  projectileSpeed: 10
   firePoint: {fileID: 2109192744}
   fireCooldown: 0.3
   inputBufferTime: 0.05

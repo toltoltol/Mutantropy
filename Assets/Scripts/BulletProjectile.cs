@@ -13,7 +13,9 @@ public class BulletProjectile : MonoBehaviour
         _lifetime = lifetime;
         _direction = direction;
         _speed = speed;
+        Destroy(gameObject, _lifetime);
     }
+    
     // Function to inform projectile what way it is going lol 
     //Deprecated
     public void SetDirection(Vector2 direction)
@@ -21,11 +23,6 @@ public class BulletProjectile : MonoBehaviour
         _direction = direction;
         _lifetime = 5f;
         _speed = 10f;
-    }
-
-    void Start()
-    {
-        // Destroy the projectile after a certain time
         Destroy(gameObject, _lifetime);
     }
     
