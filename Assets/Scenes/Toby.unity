@@ -1371,13 +1371,13 @@ MonoBehaviour:
   attackPower: 1
   minAttackPower: 0.1
   maxAttackPower: 1000
-  attackSpeed: 1
-  minAttackSpeed: 0.5
-  maxAttackSpeed: 2
+  attackSpeed: 2
+  minAttackSpeed: 0.1
+  maxAttackSpeed: 10
   attackRange: 5
   minAttackRange: 0.5
   maxAttackRange: 10
-  attackProjectileSpeed: 5
+  attackProjectileSpeed: 8
   minAttackProjectileSpeed: 0.5
   maxAttackProjectileSpeed: 10
   moveSpeed: 1
@@ -1409,7 +1409,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 6705652931990581667, guid: c48f85295fd5c452badd6fcd3f1d4691, type: 3}
   firePoint: {fileID: 2109192744}
-  fireCooldown: 0.3
   inputBufferTime: 0.05
 --- !u!70 &2038981243
 CapsuleCollider2D:

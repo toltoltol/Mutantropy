@@ -5,7 +5,7 @@ public class PlayerShooting : MonoBehaviour
 {
     public GameObject projectilePrefab;
     public Transform firePoint;
-    public float fireCooldown = 0.3f;
+    private float _fireCooldown = 0.3f;
     private float _nextFireTime = 0f;
     
     private PlayerAttributes _playerAttributes;
@@ -20,6 +20,7 @@ public class PlayerShooting : MonoBehaviour
     private void Start()
     {
         _playerAttributes = GetComponent<PlayerAttributes>();
+        _fireCooldown = 1 / _playerAttributes.attackSpeed;
     }
 
     void Update()
@@ -36,7 +37,8 @@ public class PlayerShooting : MonoBehaviour
                 if (direction != Vector2.zero)
                 {
                     FireProjectile(direction.normalized);
-                    _nextFireTime = Time.time + fireCooldown;
+                    _fireCooldown = 1 / _playerAttributes.attackSpeed;
+                    _nextFireTime = Time.time + _fireCooldown;
                 }
 
                 // Reset input after processing
@@ -53,11 +55,9 @@ public class PlayerShooting : MonoBehaviour
 
     void FireProjectile(Vector2 direction)
     {
-        direction.Normalize();
-        
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         BulletProjectile bulletProjectile = projectile.GetComponent<BulletProjectile>();
         
-        bulletProjectile.Init(_playerAttributes.attackRange, direction, _playerAttributes.attackProjectileSpeed);
+        bulletProjectile.Init(_playerAttributes.attackRange, direction.normalized, _playerAttributes.attackProjectileSpeed);
     }
 }

@@ -12,9 +12,10 @@ public class PlayerAttributes : MonoBehaviour
     public float minAttackPower = 0.1f;
     public float maxAttackPower = 1000.0f;
 
-    public float attackSpeed = 1.0f;
-    public float minAttackSpeed = 0.5f;
-    public float maxAttackSpeed = 2.0f;
+    //Attack cooldown = 1 over attack speed (inverse)
+    public float attackSpeed = 0.5f;
+    public float minAttackSpeed = 3.0f;
+    public float maxAttackSpeed = 10.0f;
     
     //Measured in seconds the projectile exists for
     public float attackRange = 5.0f;
