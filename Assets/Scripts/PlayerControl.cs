@@ -21,11 +21,22 @@ public class PlayerControl : MonoBehaviour
     // Indicates whether animation is running or not
     private bool animRunning = false;
 
-    // Speed of the movement
-    public float speed = 4f;
-
     // Direction of the movement
     private float movementDir;
+
+    private Rigidbody2D rb;
+    private PlayerAttributes playerAttributes;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        playerAttributes = GetComponent<PlayerAttributes>();
+
+        if (playerAttributes == null)
+        {
+            Debug.LogError("PlayerAttributes component is missing from the player object.");
+        }
+    }
 
     // Use this for initialization
     void Start()
@@ -62,37 +73,54 @@ public class PlayerControl : MonoBehaviour
     // Before rendering next frame...
     void Update()
     {
+        if (playerAttributes == null) return;
 
         if (animRunning)
         {
-            // Animation is running, so we need to 
+            // Animation is running, so we need to
             // figure out what frame to use at this point
             // in time
 
             // Compute number of seconds since animation started playing
             float timeSinceAnimStart = Time.timeSinceLevelLoad - timeAtAnimStart;
 
-            // Compute the index of the next frame    
+            // Compute the index of the next frame
             int frameIndex = (int)(timeSinceAnimStart * framesPerSecond);
 
-            Vector3 localScale = transform.localScale;
-            localScale.x = Mathf.Abs(transform.localScale.x) * movementDir;
-            transform.localScale = localScale;
+
+            // OVERWRITE MOVEMENT...
+            // Vector3 localScale = transform.localScale;
+            // localScale.x = Mathf.Abs(transform.localScale.x) * movementDir;
+            // transform.localScale = localScale;
+
+            float horizontal = 0f;
+            float vertical = 0f;
+
+            if (Input.GetKey(KeyCode.W)) vertical += 1f; // Move up
+            if (Input.GetKey(KeyCode.S)) vertical -= 1f; // Move down
+            if (Input.GetKey(KeyCode.A)) horizontal -= 1f; // Move left
+            if (Input.GetKey(KeyCode.D)) horizontal += 1f; // Move right
+
+            // Combine into one vector
+            Vector2 inputVector = new Vector2(horizontal, vertical).normalized;
+
+            // Move the character using speed from PlayerAttributes and GameMaster multiplier
+            rb.velocity = inputVector * playerAttributes.moveSpeed * GameMaster.GetPlayerMoveSpeedMultiplier();
 
             if (frameIndex < animSprites.Length)
             {
                 // Let the renderer know which sprite to
-                // use next      
+                // use next
                 animRenderer.sprite = animSprites[frameIndex];
 
-                // Move sprite
-                Vector3 shift = Vector3.right * movementDir * speed * Time.deltaTime;
-                transform.Translate(shift);
+                // // Move sprite
+                // Vector3 shift = Vector3.right * movementDir * speed * Time.deltaTime;
+                // transform.Translate(shift);
             }
             else
             {
                 // Animation finished, set the render
-                // with the first sprite and stop the 
+                // with the first sprite and stop the
                 // animation
                 animRenderer.sprite = animSprites[0];
                 animRunning = false;
