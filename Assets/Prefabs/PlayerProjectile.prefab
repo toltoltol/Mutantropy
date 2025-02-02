@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2515949064202581858}
   - component: {fileID: -7438328807577442684}
   m_Layer: 0
-  m_Name: TestBulletProjectile
-  m_TagString: ProjectileBase
+  m_Name: PlayerProjectile
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,8 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ad0a308a7d4478a8d3937b61902906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 5
-  speed: 10
 --- !u!58 &-7438328807577442684
 CircleCollider2D:
   m_ObjectHideFlags: 0

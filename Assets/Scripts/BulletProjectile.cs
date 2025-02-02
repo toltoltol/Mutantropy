@@ -1,30 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletProjectile : MonoBehaviour
 {
     // How long the projectile exists before being destroyed
-    public float lifetime = 5f;
+    float _lifetime;
+    Vector2 _direction;
+    float _speed;
+    public float damage;
+
     
-    private Vector2 direction;
-    public float speed;
+    public void Init(float lifetime, Vector2 direction, float speed, float attackPower)
+    {
+        _lifetime = lifetime;
+        _direction = direction;
+        _speed = speed;
+        damage = attackPower;
+        Destroy(gameObject, _lifetime);
+    }
     
     // Function to inform projectile what way it is going lol 
+    //Deprecated
     public void SetDirection(Vector2 direction)
     {
-        this.direction = direction;
-    }
-
-    void Start()
-    {
-        // Destroy the projectile after a certain time
-        Destroy(gameObject, lifetime);
+        _direction = direction;
+        _lifetime = 5f;
+        _speed = 10f;
+        Destroy(gameObject, _lifetime);
     }
     
     void Update()
     {
         // Move the projectile in the set direction
-        transform.Translate( speed * Time.deltaTime * direction);
+        transform.Translate( _speed * Time.deltaTime * _direction);
     }
 }
