@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerAttributes : MonoBehaviour
@@ -29,8 +28,11 @@ public class PlayerAttributes : MonoBehaviour
     public float moveSpeed = 1.0f;
     public float minMoveSpeed = 0.5f;
     public float maxMoveSpeed = 2.0f;
-    
-    private void Start()
+
+    // New boolean to track if player is moving
+    public bool isMoving;
+
+    void Start()
     {
         // Initialize player health
         currentHealth = Mathf.Clamp(maxHealth, minHealth, maxHealth);
@@ -42,16 +44,21 @@ public class PlayerAttributes : MonoBehaviour
     }
 
     // Handle taking damage
+    void Update()
+    {
+        // Example: set isMoving based on input
+        float horiz = Input.GetAxisRaw("Horizontal");
+        float vert = Input.GetAxisRaw("Vertical");
+        isMoving = (Mathf.Abs(horiz) > 0.1f || Mathf.Abs(vert) > 0.1f);
+    }
+
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, minHealth, maxHealth);
         Debug.Log($"Player took {damage} damage. Current health: {currentHealth}");
 
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
+        if (currentHealth <= 0) Die();
     }
 
     // Handle dealing damage
@@ -59,8 +66,9 @@ public class PlayerAttributes : MonoBehaviour
     {
         if (enemy != null)
         {
-            enemy.TakeDamage(Mathf.Clamp(attackPower, minAttackPower, maxAttackPower));
-            Debug.Log($"Player dealt {attackPower} damage to {enemy.name}.");
+            float clampedAttack = Mathf.Clamp(attackPower, minAttackPower, maxAttackPower);
+            enemy.TakeDamage(clampedAttack);
+            Debug.Log($"Player dealt {clampedAttack} damage to {enemy.name}.");
         }
     }
 
