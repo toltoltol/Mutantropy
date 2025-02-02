@@ -3,10 +3,14 @@ using UnityEngine;
 
 public class EnemyAttributes : MonoBehaviour
 {
-    public int health = 3;
+    public float health = 3f;
     public float attackPower = 1.0f;
     public float attackSpeed = 0.5f;
     public float moveSpeed = 0.5f;
+    
+    public float attackRange = 5.0f;
+    public float attackProjectileSpeed = 5.0f;
+
 
     // Get final move speed
     public float FinalMoveSpeed
@@ -20,7 +24,7 @@ public class EnemyAttributes : MonoBehaviour
     // Handle taking damage
     public void TakeDamage(float damage)
     {
-        health -= (int)Math.Ceiling(damage);
+        health -= damage;
         Debug.Log($"Enemy took {damage} damage. Current health: {health}");
 
         if (health <= 0)
@@ -45,5 +49,13 @@ public class EnemyAttributes : MonoBehaviour
         Debug.Log("Enemy has died.");
         // Add death handling logic (e.g., remove enemy from the game)
         Destroy(gameObject);
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("PlayerProjectile"))
+        {
+            TakeDamage(other.GetComponent<BulletProjectile>().damage);
+        }    
     }
 }

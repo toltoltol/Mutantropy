@@ -58,6 +58,6 @@ public class PlayerShooting : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         BulletProjectile bulletProjectile = projectile.GetComponent<BulletProjectile>();
         
-        bulletProjectile.Init(_playerAttributes.attackRange, direction.normalized, _playerAttributes.attackProjectileSpeed);
+        bulletProjectile.Init(_playerAttributes.attackRange, direction.normalized, _playerAttributes.attackProjectileSpeed, _playerAttributes.attackPower);
     }
 }

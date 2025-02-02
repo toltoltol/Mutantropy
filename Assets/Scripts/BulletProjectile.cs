@@ -6,13 +6,15 @@ public class BulletProjectile : MonoBehaviour
     float _lifetime;
     Vector2 _direction;
     float _speed;
+    public float damage;
 
     
-    public void Init(float lifetime, Vector2 direction, float speed)
+    public void Init(float lifetime, Vector2 direction, float speed, float attackPower)
     {
         _lifetime = lifetime;
         _direction = direction;
         _speed = speed;
+        damage = attackPower;
         Destroy(gameObject, _lifetime);
     }
     

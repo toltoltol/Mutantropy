@@ -4,13 +4,13 @@ using UnityEngine;
 public class PlayerAttributes : MonoBehaviour
 {
     // Player stats with boundaries
-    public int maxHealth = 12;
-    public int minHealth = 0;
-    public int currentHealth = 3;
+    public float maxHealth = 12f;
+    public float minHealth = 0f;
+    public float currentHealth = 3f;
 
-    public float attackPower = 1.0f;
+    public float attackPower = 1f;
     public float minAttackPower = 0.1f;
-    public float maxAttackPower = 1000.0f;
+    public float maxAttackPower = 1000f;
 
     //Attack cooldown = 1 over attack speed (inverse)
     public float attackSpeed = 0.5f;
@@ -42,7 +42,7 @@ public class PlayerAttributes : MonoBehaviour
     }
 
     // Handle taking damage
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, minHealth, maxHealth);
@@ -74,9 +74,9 @@ public class PlayerAttributes : MonoBehaviour
     //I'm slapping the collision handling in here but im not entirely sure that is correct
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("ProjectileBase"))
+        if (other.CompareTag("EnemyProjectile"))
         {
-            TakeDamage(1);
+            TakeDamage(other.GetComponent<BulletProjectile>().damage);
         }
     }
 }
