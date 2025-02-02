@@ -27,11 +27,17 @@ public class EnemyAttack : MonoBehaviour {
     public float fireCooldownTime;
    
     // How much time is left until able to fire again 
+    //TODO use attack speed from enemyattributes instead
     float fireCooldownTimeLeft = 0;
+    
+    
+    private EnemyAttributes _enemyAttributes;
+
 
     private void Start()
     {
         enemyPeek = GetComponent<EnemyPeek>();
+        _enemyAttributes = GetComponent<EnemyAttributes>();
     }
 
     // Per every frame...
@@ -74,7 +80,8 @@ public class EnemyAttack : MonoBehaviour {
             BulletProjectile bulletProjectile = projectile.GetComponent<BulletProjectile>();
             if (bulletProjectile != null)
             {
-                bulletProjectile.SetDirection(CalculateShootDirection());
+                bulletProjectile.Init(_enemyAttributes.attackRange, CalculateShootDirection(), _enemyAttributes.attackProjectileSpeed, _enemyAttributes.attackPower);
+
             }
 
             // Set time left until next shot
