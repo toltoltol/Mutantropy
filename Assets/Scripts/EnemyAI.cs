@@ -4,175 +4,205 @@ public class EnemyAI : MonoBehaviour
 {
     public EnemyState currentState = EnemyState.Idle;
 
+    private PlayerAttributes playerAttributes;
     private Transform player;
     private EnemyAttributes enemyAttributes;
-    private float detectionRadius = 10f;
-    private float chaseStopDistance = 15f;
-    private float searchDuration = 5f;
+
+    public float detectionRadius = 10f;
+    public float chaseStopDistance = 15f;
+    public float searchDuration = 5f;
     private float searchTimer;
+
+    public float leftRightDuration = 2f;
+    public float boxEdgeDuration = 1f;
+    private float patrolTimer;
+    private bool doingBoxPattern;
+    private int boxStepIndex;
+
+    public float hearingRange = 15f;
+    public float investigateDistance = 2f;
+    private bool isInvestigating;
+    private Vector3 investigateTarget;
 
     void Start()
     {
         enemyAttributes = GetComponent<EnemyAttributes>();
-        player = GameObject.FindWithTag("Player").transform;
+        GameObject playerObj = GameObject.FindWithTag("Player");
+        if (playerObj)
+        {
+            playerAttributes = playerObj.GetComponent<PlayerAttributes>();
+            player = playerObj.transform;
+        }
     }
 
     void Update()
     {
         switch (currentState)
         {
-            case EnemyState.Idle:
-                UpdateIdle();
-                break;
-            case EnemyState.Patrol:
-                UpdatePatrol();
-                break;
-            case EnemyState.Chase:
-                UpdateChase();
-                break;
-            case EnemyState.Search:
-                UpdateSearch();
-                break;
-            case EnemyState.Retreat:
-                UpdateRetreat();
-                break;
+            case EnemyState.Idle: UpdateIdle(); break;
+            case EnemyState.Patrol: UpdatePatrol(); break;
+            case EnemyState.Chase: UpdateChase(); break;
+            case EnemyState.Search: UpdateSearch(); break;
+            case EnemyState.Retreat: UpdateRetreat(); break;
         }
     }
 
-    private void UpdateIdle()
+    void UpdateIdle()
     {
-        // Do idle behavior (e.g., stand still or idle animation)
-        // Transition example: after some idle time, go to Patrol
-        if (Time.frameCount % 300 == 0) // pretend "timer"
-        {
-            TransitionToState(EnemyState.Patrol);
-        }
-
-        // If player is in detection radius, transition to chase
+        if (Time.frameCount % 300 == 0) TransitionToState(EnemyState.Patrol);
         if (Vector3.Distance(transform.position, player.position) < detectionRadius)
         {
-            TransitionToState(EnemyState.Chase);
+            if (CheckForPlayerLineOfSightRaycast()) TransitionToState(EnemyState.Chase);
         }
     }
 
-    private void UpdatePatrol()
+    void UpdatePatrol()
     {
-        // Basic patrolling logic:
-        // Move along waypoints or random roam. Example code:
-        PatrolBehavior();
-
-        // If player is detected, transition to chase
         if (Vector3.Distance(transform.position, player.position) < detectionRadius)
         {
-            TransitionToState(EnemyState.Chase);
+            if (CheckForPlayerLineOfSightRaycast())
+            {
+                TransitionToState(EnemyState.Chase);
+                return;
+            }
+        }
+
+        if (!isInvestigating)
+        {
+            PatrolBehavior();
+            CheckFootstepsAndInvestigate();
+        }
+        else
+        {
+            InvestigateFootsteps();
         }
     }
 
-    private void UpdateChase()
+    void PatrolBehavior()
     {
-        // Move toward player
-        ChaseBehavior();
+        if (!doingBoxPattern)
+        {
+            patrolTimer += Time.deltaTime;
+            float cycle = Mathf.PingPong(Time.time, 1f) * 2f - 1f;
+            Vector3 offset = new Vector3(cycle * 0.5f, 0, 0);
+            float speed = enemyAttributes.FinalMoveSpeed * 0.5f;
+            transform.position += offset * speed * Time.deltaTime;
 
+            if (patrolTimer > leftRightDuration)
+            {
+                patrolTimer = 0f;
+                doingBoxPattern = true;
+                boxStepIndex = 0;
+            }
+        }
+        else MoveBoxPattern();
+    }
+
+    void MoveBoxPattern()
+    {
+        patrolTimer += Time.deltaTime;
+        Vector3 direction = Vector3.zero;
+        switch (boxStepIndex)
+        {
+            case 0: direction = Vector3.right; break;
+            case 1: direction = Vector3.forward; break;
+            case 2: direction = Vector3.left; break;
+            case 3: direction = Vector3.back; break;
+        }
+
+        float speed = enemyAttributes.FinalMoveSpeed * 0.5f;
+        transform.position += direction * speed * Time.deltaTime;
+
+        if (patrolTimer >= boxEdgeDuration)
+        {
+            patrolTimer = 0f;
+            boxStepIndex++;
+            if (boxStepIndex > 3)
+            {
+                boxStepIndex = 0;
+                doingBoxPattern = false;
+            }
+        }
+    }
+
+    void CheckFootstepsAndInvestigate()
+    {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if (distanceToPlayer > chaseStopDistance)
+        if (distanceToPlayer <= hearingRange && playerAttributes && playerAttributes.isMoving)
         {
-            // Lost sight, transition to Search
-            TransitionToState(EnemyState.Search);
+            isInvestigating = true;
+            investigateTarget = transform.position +
+                                (player.position - transform.position).normalized * investigateDistance;
         }
-        // Could also add transition to Retreat if health is low, etc.
     }
 
-    private void UpdateSearch()
+    void InvestigateFootsteps()
     {
-        // Enemy has lost sight of player, so it searches
-        SearchBehavior();
+        float speed = enemyAttributes.FinalMoveSpeed * 0.5f;
+        transform.position = Vector3.MoveTowards(transform.position, investigateTarget, speed * Time.deltaTime);
 
+        if (Vector3.Distance(transform.position, investigateTarget) < 0.1f)
+            isInvestigating = false;
+    }
+
+    void UpdateChase()
+    {
+        float speed = enemyAttributes.FinalMoveSpeed;
+        transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, player.position) > chaseStopDistance)
+            TransitionToState(EnemyState.Search);
+    }
+
+    void UpdateSearch()
+    {
         searchTimer += Time.deltaTime;
-        if (searchTimer >= searchDuration)
-        {
-            // Stop searching; go idle or back to patrol
-            TransitionToState(EnemyState.Idle);
-        }
+        if (searchTimer >= searchDuration) TransitionToState(EnemyState.Idle);
 
-        // If the player is detected again, go to chase
         if (Vector3.Distance(transform.position, player.position) < detectionRadius)
         {
-            TransitionToState(EnemyState.Chase);
+            if (CheckForPlayerLineOfSightRaycast()) TransitionToState(EnemyState.Chase);
         }
     }
 
-    private void UpdateRetreat()
+    void UpdateRetreat()
     {
-        // The enemy retreats (e.g., runs to a safe spot)
-        RetreatBehavior();
-
-        // Could check if the safe spot is reached, then go idle
-        if (ReachedSafeSpot())
-        {
-            TransitionToState(EnemyState.Idle);
-        }
+        if (ReachedSafeSpot()) TransitionToState(EnemyState.Idle);
     }
 
-    //===========================
-    // Helper Methods
-    //===========================
+    bool ReachedSafeSpot() { return false; }
 
-    private void TransitionToState(EnemyState newState)
+    void TransitionToState(EnemyState newState)
     {
-        // OnExit code for current state (if needed)
         OnExitCurrentState(currentState);
-
         currentState = newState;
-
-        // OnEnter code for new state (if needed)
         OnEnterNewState(newState);
     }
 
-    private void OnEnterNewState(EnemyState state)
+    void OnEnterNewState(EnemyState state)
     {
         switch (state)
         {
-            case EnemyState.Search:
-                searchTimer = 0f;
+            case EnemyState.Search: searchTimer = 0f; break;
+            case EnemyState.Patrol:
+                patrolTimer = 0f;
+                isInvestigating = false;
+                doingBoxPattern = false;
+                boxStepIndex = 0;
                 break;
-                // More OnEnter logic per state if needed
         }
     }
 
-    private void OnExitCurrentState(EnemyState state)
-    {
-        // Handle any cleanup or reset from the old state
-    }
+    void OnExitCurrentState(EnemyState state) { }
 
-    private void PatrolBehavior()
+    bool CheckForPlayerLineOfSightRaycast()
     {
-        // Insert your movement logic. Could reference a waypoint system, etc.
-    }
-
-    private void ChaseBehavior()
-    {
-        float speed = enemyAttributes.moveSpeed * GameMaster.GetEnemyMoveSpeedMultiplier();
-
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            player.position,
-            Time.deltaTime * speed
-        );
-    }
-
-    private void SearchBehavior()
-    {
-        // Could be wandering around the last known player position
-    }
-
-    private void RetreatBehavior()
-    {
-        // For example, move to a “safe spot” or away from player
-    }
-
-    private bool ReachedSafeSpot()
-    {
-        // Example of a check
+        Vector3 direction = (player.position - transform.position).normalized;
+        float distance = Vector3.Distance(transform.position, player.position);
+        if (Physics.Raycast(transform.position, direction, out RaycastHit hit, distance))
+        {
+            if (hit.transform.CompareTag("Player")) return true;
+        }
         return false;
     }
 }
