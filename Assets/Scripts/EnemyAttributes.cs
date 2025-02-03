@@ -56,6 +56,7 @@ public class EnemyAttributes : MonoBehaviour
         if (other.CompareTag("PlayerProjectile"))
         {
             TakeDamage(other.GetComponent<BulletProjectile>().damage);
+            Destroy(other.gameObject);
         }    
     }
 }

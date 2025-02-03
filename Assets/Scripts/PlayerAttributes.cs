@@ -89,6 +89,7 @@ public class PlayerAttributes : MonoBehaviour
         if (other.CompareTag("EnemyProjectile"))
         {
             TakeDamage(other.GetComponent<BulletProjectile>().damage);
+            Destroy(other.gameObject);
         } else if (other.CompareTag("Finish"))
         {
             SceneManager.LoadScene("Room2");
