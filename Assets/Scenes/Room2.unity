@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 132624006}
   m_Layer: 0
   m_Name: Enemy3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -291,7 +291,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRangedEnemy: 0
   projectilePrefab: {fileID: 6705652931990581667, guid: 7f0fd71fe4d414878b3b2d80e78a4c6a, type: 3}
-  player: {fileID: 0}
   autoShootProbability: 0.5
   fireCooldownTime: 8
 --- !u!61 &132624006
@@ -1830,7 +1829,7 @@ GameObject:
   - component: {fileID: 788501929}
   m_Layer: 0
   m_Name: Enemy1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1975,7 +1974,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRangedEnemy: 0
   projectilePrefab: {fileID: 6705652931990581667, guid: 7f0fd71fe4d414878b3b2d80e78a4c6a, type: 3}
-  player: {fileID: 0}
   autoShootProbability: 0.5
   fireCooldownTime: 2
 --- !u!61 &788501929
@@ -6241,7 +6239,7 @@ GameObject:
   - component: {fileID: 1479586825}
   m_Layer: 0
   m_Name: Enemy2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6392,7 +6390,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRangedEnemy: 0
   projectilePrefab: {fileID: 6705652931990581667, guid: 7f0fd71fe4d414878b3b2d80e78a4c6a, type: 3}
-  player: {fileID: 0}
   autoShootProbability: 0.5
   fireCooldownTime: 8
 --- !u!61 &1479586825
@@ -6711,6 +6708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerMoveSpeedMultiplier: 5
   EnemyMoveSpeedMultiplier: 5
+  walls: {fileID: 560474035}
 --- !u!4 &1957912139
 Transform:
   m_ObjectHideFlags: 0
