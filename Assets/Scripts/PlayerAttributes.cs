@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAttributes : MonoBehaviour
 {
@@ -41,6 +42,9 @@ public class PlayerAttributes : MonoBehaviour
         attackRange = Mathf.Clamp(attackRange, minAttackRange, maxAttackRange);
         attackProjectileSpeed = Mathf.Clamp(attackProjectileSpeed, minAttackProjectileSpeed, maxAttackProjectileSpeed);
         moveSpeed = Mathf.Clamp(moveSpeed, minMoveSpeed, maxMoveSpeed);
+        
+        //TODO decide if this should be moved
+        DontDestroyOnLoad(gameObject); 
     }
 
     // Handle taking damage
@@ -85,6 +89,9 @@ public class PlayerAttributes : MonoBehaviour
         if (other.CompareTag("EnemyProjectile"))
         {
             TakeDamage(other.GetComponent<BulletProjectile>().damage);
+        } else if (other.CompareTag("Finish"))
+        {
+            SceneManager.LoadScene("Room2");
         }
     }
 }

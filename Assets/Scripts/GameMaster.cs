@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameMaster : MonoBehaviour
@@ -6,6 +7,8 @@ public class GameMaster : MonoBehaviour
     public float EnemyMoveSpeedMultiplier = 5.0f;
 
     private static GameMaster instance;
+
+    public GameObject walls;
 
     private void Awake()
     {
@@ -18,6 +21,17 @@ public class GameMaster : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void Update()
+    {
+        int enemiesCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        if (enemiesCount <= 0)
+        {
+            Destroy(walls);
+        }
+            
+    }
+    
 
     public static float GetPlayerMoveSpeedMultiplier()
     {
