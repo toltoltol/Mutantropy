@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class HealthPotion : Item
+namespace ItemScripts
 {
-    public override void UseItem(PlayerAttributes playerAttributes)
+    public class HealthPotion : Item
     {
-        playerAttributes.currentHealth = Mathf.Clamp(playerAttributes.currentHealth + strength, 
-                                                    playerAttributes.minHealth, 
-                                                    playerAttributes.maxHealth);
+        public override void UseItem(PlayerAttributes playerAttributes)
+        {
+            playerAttributes.currentHealth = Mathf.Clamp(playerAttributes.currentHealth + strength, 
+                                                        playerAttributes.minHealth, 
+                                                        playerAttributes.maxHealth);
+        }
     }
 }
