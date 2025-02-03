@@ -75,5 +75,6 @@ crashlytics-build.properties
 # .idea Rider preferences files
 /.idea
  
-
- 
+.DS_Store
+Play_Mutantropy.zip
+Play_Mutantropy/
