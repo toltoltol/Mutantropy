@@ -34,9 +34,12 @@ public class HealthBarControl : MonoBehaviour
 
 
         // Check if player’s health is zero or below
+        //TODO decide if this logic should go here or in playerAttributes or gamemaster
         if (playerAttributes.currentHealth <= 0)
         {
             Destroy(gameObject);
+            Destroy(playerAttributes.gameObject);
+            
 
             // Freeze the game
             Time.timeScale = 0f;
