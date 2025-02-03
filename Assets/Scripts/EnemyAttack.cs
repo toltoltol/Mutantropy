@@ -15,7 +15,7 @@ public class EnemyAttack : MonoBehaviour {
     // prefab
     public GameObject projectilePrefab;
 
-    public Transform player;
+    private Transform player;
 
     private EnemyPeek enemyPeek;
    
@@ -38,6 +38,9 @@ public class EnemyAttack : MonoBehaviour {
     {
         enemyPeek = GetComponent<EnemyPeek>();
         _enemyAttributes = GetComponent<EnemyAttributes>();
+        
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        if (players.Length > 0) player = players[0].transform;
     }
 
     // Per every frame...
