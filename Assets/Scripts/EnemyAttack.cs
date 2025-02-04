@@ -54,6 +54,9 @@ public class EnemyAttack : MonoBehaviour {
 
     private void Start()
     {
+        Debug.Log("Sprite array length at start: " + animSprites.Length);
+        animRenderer = GetComponent<SpriteRenderer>();
+
         enemyPeek = GetComponent<EnemyPeek>();
         _enemyAttributes = GetComponent<EnemyAttributes>();
         
@@ -135,21 +138,26 @@ public class EnemyAttack : MonoBehaviour {
 
     void FixedUpdate()
     {
+        if (animSprites == null || animSprites.Length == 0)
+        {
+            Debug.LogError("animSprites is empty! Check if it's assigned in the Inspector.");
+            return;  // Prevents the error
+        }
         if (animRunning)
         {
             float timeSinceAnimStart = Time.timeSinceLevelLoad - timeAtAnimStart;
             int frameIndex = (int)(timeSinceAnimStart * framesPerSecond);
-
+            Debug.Log("Frame index: " + frameIndex);
+            Debug.Log("Sprite array length: " + animSprites.Length);
             if (frameIndex < animSprites.Length)
             {
+                
                 animRenderer.sprite = animSprites[frameIndex];
             }
             else
             {
                 animRenderer.sprite = animSprites[0];
                 animRunning = false;
-                
-                
             }
         }
     }
