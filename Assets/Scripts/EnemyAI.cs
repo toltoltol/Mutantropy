@@ -24,8 +24,17 @@ public class EnemyAI : MonoBehaviour
     private bool isInvestigating;
     private Vector3 investigateTarget;
 
+    // Animation properties
+    public Sprite[] animSprites;  // Assign enemy animation frames here
+    public float framesPerSecond = 10f;
+    private SpriteRenderer animRenderer;
+    private float timeAtAnimStart;
+    private bool animRunning = false;
+    private float movementDir;
+
     void Start()
     {
+        animRenderer = GetComponent<SpriteRenderer>();
         enemyAttributes = GetComponent<EnemyAttributes>();
         GameObject playerObj = GameObject.FindWithTag("Player");
         if (playerObj)
@@ -45,10 +54,16 @@ public class EnemyAI : MonoBehaviour
             case EnemyState.Search: UpdateSearch(); break;
             case EnemyState.Retreat: UpdateRetreat(); break;
         }
+
+        if (animRunning) {
+            AnimateSprite();
+        }
     }
 
     void UpdateIdle()
     {
+        animRunning = false;  // Stop animation
+        animRenderer.sprite = animSprites[0]; // Default idle frame
         if (Time.frameCount % 300 == 0) TransitionToState(EnemyState.Patrol);
         if (Vector3.Distance(transform.position, player.position) < detectionRadius)
         {
@@ -58,6 +73,7 @@ public class EnemyAI : MonoBehaviour
 
     void UpdatePatrol()
     {
+        animRunning = true;
         if (Vector3.Distance(transform.position, player.position) < detectionRadius)
         {
             if (CheckForPlayerLineOfSightRaycast())
@@ -147,6 +163,8 @@ public class EnemyAI : MonoBehaviour
 
     void UpdateChase()
     {
+        animRunning = true;
+
         float speed = enemyAttributes.FinalMoveSpeed;
         transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
 
@@ -177,6 +195,7 @@ public class EnemyAI : MonoBehaviour
         OnExitCurrentState(currentState);
         currentState = newState;
         OnEnterNewState(newState);
+        if (newState == EnemyState.Idle) animRunning = false;
     }
 
     void OnEnterNewState(EnemyState state)
@@ -204,5 +223,15 @@ public class EnemyAI : MonoBehaviour
             if (hit.transform.CompareTag("Player")) return true;
         }
         return false;
+    }
+
+    void AnimateSprite()
+    {
+        // Cycle through sprite frames
+        int index = (int)((Time.timeSinceLevelLoad - timeAtAnimStart) * framesPerSecond) % animSprites.Length;
+        animRenderer.sprite = animSprites[index];
+
+        // Flip sprite based on movement direction
+        animRenderer.flipX = movementDir < 0;
     }
 }

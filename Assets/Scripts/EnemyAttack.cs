@@ -6,10 +6,28 @@ using Random = UnityEngine.Random;
 
 //Stolen from COSC360 SpaceInvadors lab 
 public class EnemyAttack : MonoBehaviour {
-    
+
+    // An array with the sprites used for animation
+    public Sprite[] animSprites;
+
+    // Controls how fast to change the sprites when
+    // animation is running
+    public float framesPerSecond;
+
+    // Reference to the renderer of the sprite
+    // game object
+    SpriteRenderer animRenderer;
+
+    // Time passed since the start of animatin
+    private float timeAtAnimStart;
+
+    // Indicates whether animation is running or not
+    private bool animRunning = false;
     //Boolean to disable auto shooting for ranged (duck and cover) enemy
 
     public bool isRangedEnemy = false;
+
+    public bool isMeleeEnemy = false;
 
     // Variable storing projectile object
     // prefab
@@ -36,6 +54,9 @@ public class EnemyAttack : MonoBehaviour {
 
     private void Start()
     {
+        Debug.Log("Sprite array length at start: " + animSprites.Length);
+        animRenderer = GetComponent<SpriteRenderer>();
+
         enemyPeek = GetComponent<EnemyPeek>();
         _enemyAttributes = GetComponent<EnemyAttributes>();
         
@@ -44,31 +65,35 @@ public class EnemyAttack : MonoBehaviour {
     }
 
     // Per every frame...
-    void Update () { 
-        // If still some time left until can fire again
-        // reduce the time by the time since last
-        // frame 
-        if(fireCooldownTimeLeft > 0) {
-            fireCooldownTimeLeft -= Time.deltaTime;
-        }
-        
-        //lol skip everything else if it is ranged enemy
-        if (isRangedEnemy)
+    void Update () {
+        if (!isMeleeEnemy)
         {
-            if (transform.position == enemyPeek.openPosition1.position || transform.position == enemyPeek.openPosition2.position) { Shoot();}
-            return; // Exit point if ranged enenemy
-        }
-      
-        // Generate number a random number between 0 and 1
-        float randomSample = Random.Range(0f, 1f);
-        // If auto-shoot probability is more than zero...
-        if (randomSample < autoShootProbability)
-        {            
-            // If that random number is less than the 
-            // probability of shooting, then try to shoot
-            Shoot();
-        }
+            // If still some time left until can fire again
+            // reduce the time by the time since last
+            // frame 
+            if (fireCooldownTimeLeft > 0)
+            {
+                fireCooldownTimeLeft -= Time.deltaTime;
+            }
 
+            //lol skip everything else if it is ranged enemy
+            if (isRangedEnemy)
+            {
+                if (transform.position == enemyPeek.openPosition1.position || transform.position == enemyPeek.openPosition2.position) { Shoot(); }
+                return; // Exit point if ranged enenemy
+            }
+
+            // Generate number a random number between 0 and 1
+            float randomSample = Random.Range(0f, 1f);
+            // If auto-shoot probability is more than zero...
+            if (randomSample < autoShootProbability)
+            {
+                // If that random number is less than the 
+                // probability of shooting, then try to shoot
+                Shoot();
+            }
+        }
+        StartAttackAnimation();
     }
 
     // Method for firing a projectile
@@ -104,5 +129,37 @@ public class EnemyAttack : MonoBehaviour {
 
         return direction;
     }
-    
+
+    public void StartAttackAnimation()
+    {
+        animRunning = true;
+        timeAtAnimStart = Time.timeSinceLevelLoad;
+    }
+
+    void FixedUpdate()
+    {
+        if (animSprites == null || animSprites.Length == 0)
+        {
+            Debug.LogError("animSprites is empty! Check if it's assigned in the Inspector.");
+            return;  // Prevents the error
+        }
+        if (animRunning)
+        {
+            float timeSinceAnimStart = Time.timeSinceLevelLoad - timeAtAnimStart;
+            int frameIndex = (int)(timeSinceAnimStart * framesPerSecond);
+            Debug.Log("Frame index: " + frameIndex);
+            Debug.Log("Sprite array length: " + animSprites.Length);
+            if (frameIndex < animSprites.Length)
+            {
+                
+                animRenderer.sprite = animSprites[frameIndex];
+            }
+            else
+            {
+                animRenderer.sprite = animSprites[0];
+                animRunning = false;
+            }
+        }
+    }
 }
+

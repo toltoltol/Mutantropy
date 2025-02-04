@@ -250,6 +250,14 @@ MonoBehaviour:
   boxEdgeDuration: 1
   hearingRange: 15
   investigateDistance: 2
+  animSprites:
+  - {fileID: -732378318, guid: d52b77a72290840a9b62068b19034b50, type: 3}
+  - {fileID: 591677810, guid: d52b77a72290840a9b62068b19034b50, type: 3}
+  - {fileID: 278275058, guid: d52b77a72290840a9b62068b19034b50, type: 3}
+  - {fileID: -170011030, guid: d52b77a72290840a9b62068b19034b50, type: 3}
+  - {fileID: 142741968, guid: d52b77a72290840a9b62068b19034b50, type: 3}
+  - {fileID: 984249581, guid: d52b77a72290840a9b62068b19034b50, type: 3}
+  framesPerSecond: 10
 --- !u!50 &132624004
 Rigidbody2D:
   serializedVersion: 4
@@ -289,9 +297,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e953e2ac28f4b56b9462914d0b596d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animSprites: []
+  framesPerSecond: 0
   isRangedEnemy: 0
+  isMeleeEnemy: 0
   projectilePrefab: {fileID: 6705652931990581667, guid: 7f0fd71fe4d414878b3b2d80e78a4c6a, type: 3}
-  player: {fileID: 1300353962}
   autoShootProbability: 0.5
   fireCooldownTime: 8
 --- !u!61 &132624006
@@ -1828,6 +1838,7 @@ GameObject:
   - component: {fileID: 788501927}
   - component: {fileID: 788501928}
   - component: {fileID: 788501929}
+  - component: {fileID: 788501930}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy
@@ -1973,9 +1984,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e953e2ac28f4b56b9462914d0b596d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animSprites:
+  - {fileID: 294928977, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: -476168105, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 398238707, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 1033456305, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: -273329289, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 591177787, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 1781756807, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 690868021, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 1224585185, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  framesPerSecond: 12
   isRangedEnemy: 0
+  isMeleeEnemy: 0
   projectilePrefab: {fileID: 6705652931990581667, guid: 7f0fd71fe4d414878b3b2d80e78a4c6a, type: 3}
-  player: {fileID: 1300353962}
   autoShootProbability: 0.5
   fireCooldownTime: 2
 --- !u!61 &788501929
@@ -2023,6 +2045,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.90625, y: 0.96875}
   m_EdgeRadius: 0
+--- !u!114 &788501930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788501922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1750e07647134a779d4412d96824d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  detectionRadius: 10
+  chaseStopDistance: 15
+  searchDuration: 5
+  leftRightDuration: 2
+  boxEdgeDuration: 1
+  hearingRange: 15
+  investigateDistance: 2
+  animSprites:
+  - {fileID: 294928977, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: -476168105, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 398238707, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 1033456305, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: -273329289, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 591177787, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 1781756807, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 690868021, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 1224585185, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  framesPerSecond: 10
 --- !u!1 &937340090
 GameObject:
   m_ObjectHideFlags: 0
@@ -6353,7 +6406,7 @@ MonoBehaviour:
   attackPower: 1
   minAttackPower: 0.1
   maxAttackPower: 1000
-  attackSpeed: 0.5
+  attackSpeed: 0.1
   minAttackSpeed: 3
   maxAttackSpeed: 10
   attackRange: 5
@@ -6580,6 +6633,12 @@ MonoBehaviour:
   boxEdgeDuration: 1
   hearingRange: 15
   investigateDistance: 2
+  animSprites:
+  - {fileID: -843106812, guid: 535e7df6d20304114b8c84de1976e027, type: 3}
+  - {fileID: -943581354, guid: 535e7df6d20304114b8c84de1976e027, type: 3}
+  - {fileID: 1398953161, guid: 535e7df6d20304114b8c84de1976e027, type: 3}
+  - {fileID: -860798745, guid: 535e7df6d20304114b8c84de1976e027, type: 3}
+  framesPerSecond: 10
 --- !u!50 &1479586823
 Rigidbody2D:
   serializedVersion: 4
@@ -6619,9 +6678,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e953e2ac28f4b56b9462914d0b596d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animSprites: []
+  framesPerSecond: 0
   isRangedEnemy: 0
+  isMeleeEnemy: 0
   projectilePrefab: {fileID: 6705652931990581667, guid: 7f0fd71fe4d414878b3b2d80e78a4c6a, type: 3}
-  player: {fileID: 1300353962}
   autoShootProbability: 0.5
   fireCooldownTime: 8
 --- !u!61 &1479586825
@@ -6919,6 +6980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1957912139}
   - component: {fileID: 1957912138}
+  - component: {fileID: 1957912140}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -6956,6 +7018,102 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1957912140
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957912137}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 714f753e30e67445a99ae07be0b11557, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2078381302
 GameObject:
   m_ObjectHideFlags: 0
