@@ -1984,8 +1984,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e953e2ac28f4b56b9462914d0b596d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animSprites: []
-  framesPerSecond: 0
+  animSprites:
+  - {fileID: 294928977, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: -476168105, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 398238707, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 1033456305, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: -273329289, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 591177787, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 1781756807, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 690868021, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  - {fileID: 1224585185, guid: 45c0c5fe3c6a446ecb85146479a351be, type: 3}
+  framesPerSecond: 12
   isRangedEnemy: 0
   isMeleeEnemy: 0
   projectilePrefab: {fileID: 6705652931990581667, guid: 7f0fd71fe4d414878b3b2d80e78a4c6a, type: 3}
