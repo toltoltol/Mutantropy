@@ -227,11 +227,14 @@ public class EnemyAI : MonoBehaviour
 
     void AnimateSprite()
     {
-        // Cycle through sprite frames
-        int index = (int)((Time.timeSinceLevelLoad - timeAtAnimStart) * framesPerSecond) % animSprites.Length;
-        animRenderer.sprite = animSprites[index];
+        if (animSprites.Length > 0)
+        {
+            // Cycle through sprite frames
+            int index = (int)((Time.timeSinceLevelLoad - timeAtAnimStart) * framesPerSecond) % animSprites.Length;
+            animRenderer.sprite = animSprites[index];
 
-        // Flip sprite based on movement direction
-        animRenderer.flipX = movementDir < 0;
+            // Flip sprite based on movement direction
+            animRenderer.flipX = movementDir < 0;
+        }
     }
 }
