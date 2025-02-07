@@ -19,6 +19,9 @@ namespace UI
         // PlayerHealth healthInfoProvider;
         // Remover gameoverInfoProvider;
 
+        // New health retriever
+        PlayerAttributes _healthInfoProvider;
+
         // Health value currently displayed
         float health;
 
@@ -35,7 +38,7 @@ namespace UI
             // // that provide informaiton about the score,
             // // health and game over condition
             // scoreInfoProvider = FindObjectOfType<Score>();
-            // healthInfoProvider = FindObjectOfType<PlayerHealth>();
+            _healthInfoProvider = FindObjectOfType<PlayerAttributes>();
             // GameObject[] objArray = GameObject.FindGameObjectsWithTag("gameoverTrigger");
             // gameoverInfoProvider = objArray[0].GetComponent<Remover>();
             //

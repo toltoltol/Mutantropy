@@ -1,29 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthBarControl : MonoBehaviour
 {
-    public Sprite[] animSprites; // Array of sprites representing health states
-    public GameObject player; // Reference to the player GameObject
     public GameObject restartUI;  // Reference to the GameObject tagged "Restart" (assigned in Inspector)
 
-    private SpriteRenderer spriteRenderer;
+    private GameObject player; // Reference to the player GameObject
     private PlayerAttributes playerAttributes;
+    
+    public RectTransform healthBorderRect; // The border (scales with max health)
+    public RectTransform healthInfillRect;    // The health bar (inside the border)
+    public RectTransform curHealthRect;               // The fill (scales with current health)
+
+    public float sizeMultiplier = 32f;
+    public int borderThickness = 2;
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        if (players.Length > 0) player = players[0];
 
         if (player != null)
         {
             playerAttributes = player.GetComponent<PlayerAttributes>();
         }
-
-        // Ensure the restart UI is hidden at game start
-        if (restartUI != null)
+        else
         {
-            restartUI.SetActive(false);
+            Destroy(gameObject);
         }
     }
 
@@ -32,12 +35,12 @@ public class HealthBarControl : MonoBehaviour
         // Make sure we have a valid reference to player attributes
         if (playerAttributes == null) return;
 
+        UpdateHealthBar(playerAttributes.currentHealth, playerAttributes.maxHealth);
 
         // Check if player’s health is zero or below
         //TODO decide if this logic should go here or in playerAttributes or gamemaster
         if (playerAttributes.currentHealth <= 0)
         {
-            Destroy(gameObject);
             Destroy(playerAttributes.gameObject);
             
 
@@ -52,11 +55,23 @@ public class HealthBarControl : MonoBehaviour
 
             return;
         }
+        
+        
+    }
+    
+    public void UpdateHealthBar(float currentHealth, float maxHealth)
+    {
+        var infillWidth = maxHealth * sizeMultiplier;
+        var borderWidth = infillWidth + borderThickness;
+        var curWidth = currentHealth * sizeMultiplier;
+        
+        
+        healthBorderRect.sizeDelta = new Vector2(borderWidth, healthBorderRect.sizeDelta.y);
 
-        if (animSprites.Length > 0)
-        {
-            int index = Mathf.Clamp(Mathf.FloorToInt(playerAttributes.currentHealth) - 1, 0, animSprites.Length - 1);
-            spriteRenderer.sprite = animSprites[index];
-        }
+        // Ensure the inner health bar matches the border size (padding of -10 for aesthetics)
+        healthInfillRect.sizeDelta = new Vector2(infillWidth, healthInfillRect.sizeDelta.y);
+
+        // Scale the fill amount based on current health
+        curHealthRect.sizeDelta = new Vector2(curWidth, curHealthRect.sizeDelta.y);
     }
 }
