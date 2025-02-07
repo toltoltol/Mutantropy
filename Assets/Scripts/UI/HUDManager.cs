@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -7,7 +8,6 @@ namespace UI
     // Credit: COSC360 User Interface Practical
     public class HUDManager : MonoBehaviour
     {
-
         // // References to UI elements on the canvas
         // public Text hudScore = null;
         // public Slider hudHealth = null;
@@ -19,11 +19,17 @@ namespace UI
         // PlayerHealth healthInfoProvider;
         // Remover gameoverInfoProvider;
 
+        
         // New health retriever
-        PlayerAttributes _healthInfoProvider;
+        PlayerAttributes _playerAttributes;
 
         // Health value currently displayed
-        float health;
+        
+        //Other stats text elements
+        public TextMeshProUGUI speedText;
+        public TextMeshProUGUI atkSpeedText;
+        public TextMeshProUGUI dmgText;
+
 
         // Reference to UI panel that is our pause menu
         public GameObject pauseMenuPanel;
@@ -38,7 +44,7 @@ namespace UI
             // // that provide informaiton about the score,
             // // health and game over condition
             // scoreInfoProvider = FindObjectOfType<Score>();
-            _healthInfoProvider = FindObjectOfType<PlayerAttributes>();
+            _playerAttributes = FindObjectOfType<PlayerAttributes>();
             // GameObject[] objArray = GameObject.FindGameObjectsWithTag("gameoverTrigger");
             // gameoverInfoProvider = objArray[0].GetComponent<Remover>();
             //
@@ -54,6 +60,9 @@ namespace UI
         // Update is called once per frame
         void Update()
         {
+            speedText.text = _playerAttributes.moveSpeed.ToString("F1");
+            atkSpeedText.text = _playerAttributes.attackSpeed.ToString("F1");
+            dmgText.text = _playerAttributes.attackPower.ToString("F1");
             // // Display the score
             // hudScore.text = "Score: " + scoreInfoProvider.score;
             //
