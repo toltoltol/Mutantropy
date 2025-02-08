@@ -16,6 +16,7 @@ public class MainMenuManager : MonoBehaviour
     }
 
     public void Credits() {
+        Debug.Log("Credits button pressed");
         SceneManager.LoadScene("Credits");
     }
 
