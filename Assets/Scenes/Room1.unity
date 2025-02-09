@@ -306,6 +306,9 @@ MonoBehaviour:
   moveSpeed: 2
   attackRange: 5
   attackProjectileSpeed: 5
+  dropsList:
+  - {fileID: 6400626404903785981, guid: b2164c4bb0c024a8bb108c58c638de4e, type: 3}
+  - {fileID: 6360384295680157086, guid: 61849e9a2a531484784d1e502b8991d3, type: 3}
 --- !u!114 &132624003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2075,6 +2078,9 @@ MonoBehaviour:
   moveSpeed: 0.5
   attackRange: 5
   attackProjectileSpeed: 5
+  dropsList:
+  - {fileID: 6400626404903785981, guid: b2164c4bb0c024a8bb108c58c638de4e, type: 3}
+  - {fileID: 6360384295680157086, guid: 61849e9a2a531484784d1e502b8991d3, type: 3}
 --- !u!114 &788501926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6634,6 +6640,9 @@ MonoBehaviour:
   moveSpeed: 0.75
   attackRange: 5
   attackProjectileSpeed: 8
+  dropsList:
+  - {fileID: 6400626404903785981, guid: b2164c4bb0c024a8bb108c58c638de4e, type: 3}
+  - {fileID: 6360384295680157086, guid: 61849e9a2a531484784d1e502b8991d3, type: 3}
 --- !u!114 &1479586822
 MonoBehaviour:
   m_ObjectHideFlags: 0

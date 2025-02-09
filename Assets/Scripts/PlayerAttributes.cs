@@ -1,3 +1,5 @@
+using ItemScripts;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -119,9 +121,14 @@ public class PlayerAttributes : MonoBehaviour
         {
             TakeDamage(other.GetComponent<BulletProjectile>().damage);
             Destroy(other.gameObject);
-        } else if (other.CompareTag("Finish"))
+        } 
+        else if (other.CompareTag("Finish"))
         {
             SceneManager.LoadScene("Room2");
+        } 
+        else if (other.CompareTag("Item"))
+        {
+            other.GetComponent<Item>().UseItem(this);
         }
     }
 }

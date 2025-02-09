@@ -10,7 +10,9 @@ public class EnemyAttributes : MonoBehaviour
     
     public float attackRange = 5.0f;
     public float attackProjectileSpeed = 5.0f;
-
+    
+    //This stores the possible items an enemy can drop
+    public GameObject[] dropsList;
 
     // Get final move speed
     public float FinalMoveSpeed
@@ -47,8 +49,23 @@ public class EnemyAttributes : MonoBehaviour
     private void Die()
     {
         Debug.Log("Enemy has died.");
+        
         // Add death handling logic (e.g., remove enemy from the game)
+        
+        // drop an item
+        DropItem();
+        
         Destroy(gameObject);
+    }
+    
+    private void DropItem()
+    {
+        if (dropsList.Length == 0) return;
+
+        int randomIndex = UnityEngine.Random.Range(0, dropsList.Length);
+        GameObject itemToSpawn = dropsList[randomIndex];
+
+        Instantiate(itemToSpawn, transform.position, Quaternion.identity); // Spawn item at enemy's position
     }
     
     private void OnTriggerEnter2D(Collider2D other)
