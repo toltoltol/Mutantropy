@@ -207,7 +207,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.42, y: 1.9, z: -4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -224,10 +224,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a51c9ec00b646dd9453d45c9694216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
-  attackPower: 1
-  attackSpeed: 0.5
-  moveSpeed: 0.5
+  health: 4
+  attackPower: 0.25
+  attackSpeed: 1
+  moveSpeed: 2
   attackRange: 5
   attackProjectileSpeed: 5
 --- !u!114 &132624003
@@ -1908,7 +1908,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.74, y: 1.9, z: -4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1925,7 +1925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a51c9ec00b646dd9453d45c9694216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 5
   attackPower: 1
   attackSpeed: 0.5
   moveSpeed: 0.5
@@ -6382,8 +6382,8 @@ Transform:
   m_GameObject: {fileID: 1300353959}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.26, z: -5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.8908, y: -4.3692, z: -5}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -6590,7 +6590,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.02, y: 1.9, z: -4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -6607,12 +6607,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a51c9ec00b646dd9453d45c9694216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
-  attackPower: 1
+  health: 2
+  attackPower: 0.5
   attackSpeed: 0.5
-  moveSpeed: 0.5
+  moveSpeed: 0.75
   attackRange: 5
-  attackProjectileSpeed: 5
+  attackProjectileSpeed: 8
 --- !u!114 &1479586822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6897,12 +6897,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf430ac565a941ef96336e3f6fd088e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animSprites:
-  - {fileID: 21300000, guid: bf61fd7f8afba4f8cb44b1ee6f2f42f8, type: 3}
-  - {fileID: 21300000, guid: 5425e0acbcf7148988bfa6a96e112a7a, type: 3}
-  - {fileID: 21300000, guid: 873a792e098d64aeb83875212f74f603, type: 3}
-  player: {fileID: 1300353959}
   restartUI: {fileID: 683289229}
+  healthBorderRect: {fileID: 0}
+  healthInfillRect: {fileID: 0}
+  curHealthRect: {fileID: 0}
+  sizeMultiplier: 32
+  borderThickness: 2
 --- !u!4 &1807242356
 Transform:
   m_ObjectHideFlags: 0
