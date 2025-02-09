@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthBarControl : MonoBehaviour
 {
@@ -41,17 +42,20 @@ public class HealthBarControl : MonoBehaviour
         //TODO decide if this logic should go here or in playerAttributes or gamemaster
         if (playerAttributes.currentHealth <= 0)
         {
-            Destroy(playerAttributes.gameObject);
-            
 
-            // Freeze the game
-            Time.timeScale = 0f;
+            Destroy(playerAttributes.gameObject);
+
+
+       
+            Time.timeScale = 1f;
 
             // Display the "Restart" UI
             if (restartUI != null)
             {
                 restartUI.SetActive(true);
             }
+            Debug.Log("Player died. Loading GameOver scene...");
+            SceneManager.LoadScene("GameOver");
 
             return;
         }
