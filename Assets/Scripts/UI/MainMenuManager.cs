@@ -6,8 +6,8 @@ public class MainMenuManager : MonoBehaviour
 {
    
     public void StartGame () {
-        // Load the "Level" scene
-        SceneManager.LoadScene("Room1");   
+        // Load the cutscene
+        SceneManager.LoadScene("Cutscene");   
     }
    
     public void QuitGame() {
