@@ -9,7 +9,8 @@ public class PlayerShooting : MonoBehaviour
     private float _nextFireTime = 0f;
     
     private PlayerAttributes _playerAttributes;
- 
+    public AudioSource audioSource;  // Reference to AudioSource
+    public AudioClip shootSound;     // Reference to shooting sound
 
     // Buffer to store key presses
     public float inputBufferTime = 0.05f; // Time window for buffering inputs
@@ -59,5 +60,11 @@ public class PlayerShooting : MonoBehaviour
         BulletProjectile bulletProjectile = projectile.GetComponent<BulletProjectile>();
         
         bulletProjectile.Init(_playerAttributes.attackRange, direction.normalized, _playerAttributes.attackProjectileSpeed, _playerAttributes.attackPower);
+
+        // Play the shooting sound
+        if (audioSource != null && shootSound != null)
+        {
+            audioSource.PlayOneShot(shootSound);
+        }
     }
 }
