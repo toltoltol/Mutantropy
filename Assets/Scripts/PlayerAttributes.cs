@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerAttributes : MonoBehaviour
 {
+    // Singleton object
+    public static PlayerAttributes Instance;
+
     // Player stats with boundaries
     public float maxHealth = 12f;
     public float minHealth = 0f;
@@ -37,6 +40,19 @@ public class PlayerAttributes : MonoBehaviour
 
     private int currentRoomNumber = 1;
 
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
         // Initialize player health
@@ -46,9 +62,6 @@ public class PlayerAttributes : MonoBehaviour
         attackRange = Mathf.Clamp(attackRange, minAttackRange, maxAttackRange);
         attackProjectileSpeed = Mathf.Clamp(attackProjectileSpeed, minAttackProjectileSpeed, maxAttackProjectileSpeed);
         moveSpeed = Mathf.Clamp(moveSpeed, minMoveSpeed, maxMoveSpeed);
-
-        //TODO decide if this should be moved
-        DontDestroyOnLoad(gameObject);
     }
 
     // Handle taking damage
@@ -113,7 +126,6 @@ public class PlayerAttributes : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player has died.");
-        // Add death handling logic (e.g., respawn or game over)
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -129,7 +141,6 @@ public class PlayerAttributes : MonoBehaviour
         }
         else if (other.CompareTag("Finish"))
         {
-            Destroy(gameObject);
             currentRoomNumber++;
             RoomManager.LoadNextRoom();
         }
