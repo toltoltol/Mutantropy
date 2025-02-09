@@ -2,15 +2,15 @@ using UnityEngine;
 
 namespace ItemScripts
 {
-    public class CatFood : Item
+    public class ChocBar : Item
     {
         public override void UseItem(PlayerAttributes playerAttributes)
         {
-            playerAttributes.SetAttackPower(-(strength / 2));
-            
             playerAttributes.SetAttackSpeed(strength);
             
-            playerAttributes.SetAttackProjectileSpeed(strength / 2);
+            playerAttributes.SetAttackProjectileSpeed(strength);
+            
+            playerAttributes.SetAttackRange(- strength);
             
             Destroy(gameObject);
         }

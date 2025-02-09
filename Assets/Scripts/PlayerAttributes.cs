@@ -76,6 +76,35 @@ public class PlayerAttributes : MonoBehaviour
         }
     }
 
+    public void SetAttackSpeed(float amount)
+    {
+        attackSpeed = Mathf.Clamp(attackSpeed + amount, 
+            minAttackSpeed, 
+            maxAttackSpeed);
+    }
+    
+    public void SetAttackPower(float amount)
+    {
+        attackPower = Mathf.Clamp(attackPower + amount, 
+            minAttackPower, 
+            maxAttackPower);
+    }
+    
+    public void SetAttackProjectileSpeed(float amount)
+    {
+        attackProjectileSpeed = Mathf.Clamp(attackProjectileSpeed + amount, 
+            minAttackProjectileSpeed, 
+            maxAttackProjectileSpeed);
+    }
+    
+    public void SetAttackRange(float amount)
+    {
+        attackRange = Mathf.Clamp(attackRange + amount, 
+            minAttackRange, 
+            maxAttackRange);
+    }
+    
+
     // Handle player death
     private void Die()
     {
