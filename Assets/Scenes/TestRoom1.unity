@@ -199,6 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1300353962}
   - component: {fileID: 1300353961}
+  - component: {fileID: 1300353967}
   - component: {fileID: 1300353960}
   - component: {fileID: 1300353963}
   - component: {fileID: 1300353964}
@@ -418,6 +419,20 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6705652931990581667, guid: 662ef51839fce484ba5eb60ab24a3934, type: 3}
   firePoint: {fileID: 1300353962}
   inputBufferTime: 0.05
+--- !u!114 &1300353967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300353959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590b2ce8971004c10b4d8d2a12c8d768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  startingPosition: {fileID: 11400000, guid: a6b1589ad52e1d6449000abb9b5c320a, type: 2}
 --- !u!1 &1650221325
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,12 +600,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf430ac565a941ef96336e3f6fd088e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animSprites:
-  - {fileID: 21300000, guid: bf61fd7f8afba4f8cb44b1ee6f2f42f8, type: 3}
-  - {fileID: 21300000, guid: 5425e0acbcf7148988bfa6a96e112a7a, type: 3}
-  - {fileID: 21300000, guid: 873a792e098d64aeb83875212f74f603, type: 3}
-  player: {fileID: 1300353959}
   restartUI: {fileID: 0}
+  healthBorderRect: {fileID: 0}
+  healthInfillRect: {fileID: 0}
+  curHealthRect: {fileID: 0}
+  sizeMultiplier: 32
+  borderThickness: 2
 --- !u!4 &1807242356
 Transform:
   m_ObjectHideFlags: 0
@@ -717,6 +732,22 @@ PrefabInstance:
     - target: {fileID: 9093781883040005081, guid: 956c8ca54283bc749930c8b9853c3029, type: 3}
       propertyPath: sceneToLoad
       value: TestRoom2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093781883040005081, guid: 956c8ca54283bc749930c8b9853c3029, type: 3}
+      propertyPath: playerStorage
+      value: 
+      objectReference: {fileID: 11400000, guid: a6b1589ad52e1d6449000abb9b5c320a, type: 2}
+    - target: {fileID: 9093781883040005081, guid: 956c8ca54283bc749930c8b9853c3029, type: 3}
+      propertyPath: playerPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093781883040005081, guid: 956c8ca54283bc749930c8b9853c3029, type: 3}
+      propertyPath: playerStoredPosition
+      value: 
+      objectReference: {fileID: 11400000, guid: a6b1589ad52e1d6449000abb9b5c320a, type: 2}
+    - target: {fileID: 9093781883040005081, guid: 956c8ca54283bc749930c8b9853c3029, type: 3}
+      propertyPath: playerCurrentPosition.x
+      value: -15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
