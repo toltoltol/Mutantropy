@@ -16,12 +16,12 @@ public class PlayerAttributes : MonoBehaviour
     public float attackSpeed = 0.5f;
     public float minAttackSpeed = 3.0f;
     public float maxAttackSpeed = 10.0f;
-    
+
     //Measured in seconds the projectile exists for
     public float attackRange = 5.0f;
     public float minAttackRange = 0.5f;
     public float maxAttackRange = 10.0f;
-    
+
     public float attackProjectileSpeed = 5.0f;
     public float minAttackProjectileSpeed = 0.5f;
     public float maxAttackProjectileSpeed = 10.0f;
@@ -33,6 +33,8 @@ public class PlayerAttributes : MonoBehaviour
     // New boolean to track if player is moving
     public bool isMoving;
 
+    private int currentRoomNumber = 1;
+
     void Start()
     {
         // Initialize player health
@@ -42,9 +44,9 @@ public class PlayerAttributes : MonoBehaviour
         attackRange = Mathf.Clamp(attackRange, minAttackRange, maxAttackRange);
         attackProjectileSpeed = Mathf.Clamp(attackProjectileSpeed, minAttackProjectileSpeed, maxAttackProjectileSpeed);
         moveSpeed = Mathf.Clamp(moveSpeed, minMoveSpeed, maxMoveSpeed);
-        
+
         //TODO decide if this should be moved
-        DontDestroyOnLoad(gameObject); 
+        DontDestroyOnLoad(gameObject);
     }
 
     // Handle taking damage
@@ -82,17 +84,19 @@ public class PlayerAttributes : MonoBehaviour
         Debug.Log("Player has died.");
         // Add death handling logic (e.g., respawn or game over)
     }
-    
-    //I'm slapping the collision handling in here but im not entirely sure that is correct
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("EnemyProjectile"))
         {
             TakeDamage(other.GetComponent<BulletProjectile>().damage);
             Destroy(other.gameObject);
-        } else if (other.CompareTag("Finish"))
+        }
+        else if (other.CompareTag("Finish"))
         {
-            SceneManager.LoadScene("Room2");
+            Destroy(gameObject);
+            currentRoomNumber++;
+            RoomManager.LoadNextRoom();
         }
     }
 }
