@@ -8,7 +8,8 @@ public class GameMaster : MonoBehaviour
 
     private static GameMaster instance;
 
-    public GameObject walls;
+    //public GameObject walls;
+    public GameObject ClosedGates;
 
     private void Awake()
     {
@@ -27,7 +28,8 @@ public class GameMaster : MonoBehaviour
         int enemiesCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
         if (enemiesCount <= 0)
         {
-            Destroy(walls);
+            //Destroy(walls);
+            Destroy(ClosedGates);
         }
             
     }
