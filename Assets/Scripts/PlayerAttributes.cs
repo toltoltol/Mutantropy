@@ -1,3 +1,5 @@
+using ItemScripts;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -78,6 +80,35 @@ public class PlayerAttributes : MonoBehaviour
         }
     }
 
+    public void SetAttackSpeed(float amount)
+    {
+        attackSpeed = Mathf.Clamp(attackSpeed + amount,
+            minAttackSpeed,
+            maxAttackSpeed);
+    }
+
+    public void SetAttackPower(float amount)
+    {
+        attackPower = Mathf.Clamp(attackPower + amount,
+            minAttackPower,
+            maxAttackPower);
+    }
+
+    public void SetAttackProjectileSpeed(float amount)
+    {
+        attackProjectileSpeed = Mathf.Clamp(attackProjectileSpeed + amount,
+            minAttackProjectileSpeed,
+            maxAttackProjectileSpeed);
+    }
+
+    public void SetAttackRange(float amount)
+    {
+        attackRange = Mathf.Clamp(attackRange + amount,
+            minAttackRange,
+            maxAttackRange);
+    }
+
+
     // Handle player death
     private void Die()
     {
@@ -91,6 +122,10 @@ public class PlayerAttributes : MonoBehaviour
         {
             TakeDamage(other.GetComponent<BulletProjectile>().damage);
             Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("Item"))
+        {
+            other.GetComponent<Item>().UseItem(this);
         }
         else if (other.CompareTag("Finish"))
         {
