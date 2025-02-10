@@ -6,12 +6,14 @@ namespace ItemScripts
     {
         private void Start()
         {
-            itemEffectDescription = "Ate ThirdEye: +Range";
+            itemEffectDescription = "Ate ThirdEye: +Range +Bullet Speed";
         }
         
         public override void UseItem(PlayerAttributes playerAttributes)
         {
             playerAttributes.IncreaseAttackRange(strength);
+            
+            playerAttributes.IncreaseAttackProjectileSpeed(strength);
             
             UpdateItemInfoBox();
             
