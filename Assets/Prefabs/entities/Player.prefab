@@ -133,7 +133,7 @@ MonoBehaviour:
   attackSpeed: 0.1
   minAttackSpeed: 3
   maxAttackSpeed: 10
-  attackRange: 5
+  attackRange: 3
   minAttackRange: 0.5
   maxAttackRange: 10
   attackProjectileSpeed: 5
@@ -229,6 +229,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 6705652931990581667, guid: 662ef51839fce484ba5eb60ab24a3934, type: 3}
   firePoint: {fileID: 5573686072703293207}
+  audioSource: {fileID: 0}
+  shootSound: {fileID: 0}
   inputBufferTime: 0.05
 --- !u!1 &8787733860330695847
 GameObject:

@@ -93,28 +93,28 @@ public class PlayerAttributes : MonoBehaviour
         }
     }
 
-    public void SetAttackSpeed(float amount)
+    public void IncreaseAttackSpeed(float amount)
     {
         attackSpeed = Mathf.Clamp(attackSpeed + amount,
             minAttackSpeed,
             maxAttackSpeed);
     }
 
-    public void SetAttackPower(float amount)
+    public void IncreaseAttackPower(float amount)
     {
         attackPower = Mathf.Clamp(attackPower + amount,
             minAttackPower,
             maxAttackPower);
     }
 
-    public void SetAttackProjectileSpeed(float amount)
+    public void IncreaseAttackProjectileSpeed(float amount)
     {
         attackProjectileSpeed = Mathf.Clamp(attackProjectileSpeed + amount,
             minAttackProjectileSpeed,
             maxAttackProjectileSpeed);
     }
 
-    public void SetAttackRange(float amount)
+    public void IncreaseAttackRange(float amount)
     {
         attackRange = Mathf.Clamp(attackRange + amount,
             minAttackRange,

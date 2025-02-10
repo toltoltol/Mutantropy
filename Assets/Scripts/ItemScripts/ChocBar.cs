@@ -6,11 +6,11 @@ namespace ItemScripts
     {
         public override void UseItem(PlayerAttributes playerAttributes)
         {
-            playerAttributes.SetAttackSpeed(strength);
+            playerAttributes.IncreaseAttackSpeed(strength);
             
-            playerAttributes.SetAttackProjectileSpeed(strength);
+            playerAttributes.IncreaseAttackProjectileSpeed(strength);
             
-            playerAttributes.SetAttackRange(- strength);
+            playerAttributes.IncreaseAttackRange(- strength);
             
             Destroy(gameObject);
         }
