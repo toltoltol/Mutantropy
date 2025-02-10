@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7881532928320958405}
   - component: {fileID: 6615353694861739398}
   - component: {fileID: 3379329314532354885}
-  - component: {fileID: 4867516513889974520}
+  - component: {fileID: 1228042468283221500}
   m_Layer: 0
   m_Name: Noodles
   m_TagString: Item
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.79, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4867516513889974520
+--- !u!114 &1228042468283221500
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,4 +143,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd7602dc6a5ab44dabde8cd36d838139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strength: 1
+  strength: 0.5
+  itemEffectDescription: 

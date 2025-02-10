@@ -2,16 +2,18 @@ using UnityEngine;
 
 namespace ItemScripts
 {
-    public class ThirdEye : Item
+    public class Noodles : Item
     {
         private void Start()
         {
-            itemEffectDescription = "Ate ThirdEye: +Range";
+            itemEffectDescription = "Ate Noodles: +Health +Max Health";
         }
         
         public override void UseItem(PlayerAttributes playerAttributes)
         {
-            playerAttributes.IncreaseAttackRange(strength);
+            playerAttributes.currentHealth += strength;
+
+            playerAttributes.maxHealth += strength;
             
             UpdateItemInfoBox();
             

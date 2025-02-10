@@ -121,6 +121,13 @@ public class PlayerAttributes : MonoBehaviour
             maxAttackRange);
     }
 
+    public void IncreaseMoveSpeed(float amount)
+    {
+        moveSpeed = Mathf.Clamp(moveSpeed + amount, 
+            minMoveSpeed, 
+            maxMoveSpeed);
+    }
+
 
     // Handle player death
     private void Die()
