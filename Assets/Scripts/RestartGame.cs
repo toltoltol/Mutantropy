@@ -8,6 +8,7 @@ public class RestartGame : MonoBehaviour
         // Unfreeze time before reloading
         Time.timeScale = 1f;
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("GameOver");
     }
 }

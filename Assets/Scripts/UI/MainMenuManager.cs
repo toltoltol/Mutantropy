@@ -9,6 +9,10 @@ public class MainMenuManager : MonoBehaviour
         // Load the cutscene
         SceneManager.LoadScene("Cutscene");   
     }
+
+    public void StartLevel() {
+        SceneManager.LoadScene("Room1");
+    }
    
     public void QuitGame() {
         // Quit the application
