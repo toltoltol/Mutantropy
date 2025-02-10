@@ -7,6 +7,6 @@ public class Cutscene : MonoBehaviour
 {
     private void OnEnable()
     {
-        SceneManager.LoadScene("Room1", LoadSceneMode.Single);
+        SceneManager.LoadScene("Facility", LoadSceneMode.Single);
     }
 }

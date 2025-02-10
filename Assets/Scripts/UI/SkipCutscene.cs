@@ -7,7 +7,7 @@ public class SkipCutscene : MonoBehaviour
 {
     public GameObject cutsceneCanvas;
 
-   
+
 
     // Update is called once per frame
     void Update()
@@ -21,7 +21,7 @@ public class SkipCutscene : MonoBehaviour
     void Skip() {
         if (cutsceneCanvas != null) {
             //cutsceneCanvas.SetActive(false);
-            SceneManager.LoadScene("Room1");
+            SceneManager.LoadScene("Facility");
         }
     }
 }

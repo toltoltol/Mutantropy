@@ -4,16 +4,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-   
+
     public void StartGame () {
         // Load the cutscene
-        SceneManager.LoadScene("Cutscene");   
+        SceneManager.LoadScene("Cutscene");
     }
 
     public void StartLevel() {
-        SceneManager.LoadScene("Room1");
+        SceneManager.LoadScene("Facility");
     }
-   
+
     public void QuitGame() {
         // Quit the application
         Application.Quit();
