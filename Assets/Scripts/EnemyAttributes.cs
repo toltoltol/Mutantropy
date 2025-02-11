@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyAttributes : MonoBehaviour
@@ -13,6 +14,16 @@ public class EnemyAttributes : MonoBehaviour
     
     //This stores the possible items an enemy can drop
     public GameObject[] dropsList;
+
+    private SpriteRenderer _spr;
+    private Color _color;
+    public float flashDuration = 0.1f;
+
+    private void Start()
+    {
+        _spr = GetComponent<SpriteRenderer>();
+        _color = _spr.color;
+    }
 
     // Get final move speed
     public float FinalMoveSpeed
@@ -29,10 +40,19 @@ public class EnemyAttributes : MonoBehaviour
         health -= damage;
         Debug.Log($"Enemy took {damage} damage. Current health: {health}");
 
+        StartCoroutine(FlashRed());
+
         if (health <= 0)
         {
             Die();
         }
+    }
+
+    private IEnumerator FlashRed()
+    {
+        _spr.color = Color.red;
+        yield return new WaitForSeconds(flashDuration);
+        _spr.color = _color;
     }
 
     // Handle dealing damage

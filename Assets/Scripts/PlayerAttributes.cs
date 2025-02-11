@@ -1,6 +1,7 @@
 using ItemScripts;
 using UnityEditor;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class PlayerAttributes : MonoBehaviour
@@ -41,6 +42,10 @@ public class PlayerAttributes : MonoBehaviour
     //TODO confirm and remove this as cam trigger now handles this 
     private int currentRoomNumber = 1;
 
+    private SpriteRenderer _spr;
+    private Color _color;
+    public float flashDuration = 0.1f;
+
     void Awake()
     {
         if (Instance == null)
@@ -63,6 +68,8 @@ public class PlayerAttributes : MonoBehaviour
         attackRange = Mathf.Clamp(attackRange, minAttackRange, maxAttackRange);
         attackProjectileSpeed = Mathf.Clamp(attackProjectileSpeed, minAttackProjectileSpeed, maxAttackProjectileSpeed);
         moveSpeed = Mathf.Clamp(moveSpeed, minMoveSpeed, maxMoveSpeed);
+        _spr = GetComponent<SpriteRenderer>();
+        _color = _spr.color;
     }
 
     // Handle taking damage
@@ -80,8 +87,18 @@ public class PlayerAttributes : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, minHealth, maxHealth);
         Debug.Log($"Player took {damage} damage. Current health: {currentHealth}");
 
+        StartCoroutine(FlashRed());
+
         if (currentHealth <= 0) Die();
     }
+
+    private IEnumerator FlashRed()
+    {
+        _spr.color = Color.red;
+        yield return new WaitForSeconds(flashDuration);
+        _spr.color = _color;
+    }
+
 
     // Handle dealing damage
     public void DealDamage(EnemyAttributes enemy)
