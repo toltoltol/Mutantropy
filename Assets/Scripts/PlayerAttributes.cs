@@ -146,6 +146,13 @@ public class PlayerAttributes : MonoBehaviour
             maxMoveSpeed);
     }
 
+    public void IncreaseHealth(float amount)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + amount,
+            minHealth,
+            maxHealth);
+    }
+
 
     // Handle player death
     private void Die()
