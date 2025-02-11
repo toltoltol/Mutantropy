@@ -37,7 +37,8 @@ public class PlayerAttributes : MonoBehaviour
 
     // New boolean to track if player is moving
     public bool isMoving;
-
+    
+    //TODO confirm and remove this as cam trigger now handles this 
     private int currentRoomNumber = 1;
 
     void Awake()
@@ -146,6 +147,7 @@ public class PlayerAttributes : MonoBehaviour
         {
             other.GetComponent<Item>().UseItem(this);
         }
+        //TODO confirm and remove this as cam trigger now handles this 
         else if (other.CompareTag("Finish"))
         {
             currentRoomNumber++;
