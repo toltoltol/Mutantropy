@@ -309,6 +309,7 @@ MonoBehaviour:
   dropsList:
   - {fileID: 6400626404903785981, guid: b2164c4bb0c024a8bb108c58c638de4e, type: 3}
   - {fileID: 6360384295680157086, guid: 61849e9a2a531484784d1e502b8991d3, type: 3}
+  flashDuration: 0.1
 --- !u!114 &132624003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1982,6 +1983,7 @@ MonoBehaviour:
   dropsList:
   - {fileID: 6400626404903785981, guid: b2164c4bb0c024a8bb108c58c638de4e, type: 3}
   - {fileID: 6360384295680157086, guid: 61849e9a2a531484784d1e502b8991d3, type: 3}
+  flashDuration: 0.1
 --- !u!114 &788501926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6544,6 +6546,7 @@ MonoBehaviour:
   dropsList:
   - {fileID: 6400626404903785981, guid: b2164c4bb0c024a8bb108c58c638de4e, type: 3}
   - {fileID: 6360384295680157086, guid: 61849e9a2a531484784d1e502b8991d3, type: 3}
+  flashDuration: 0.1
 --- !u!114 &1479586822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6913,6 +6916,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameplayUI
       objectReference: {fileID: 0}
+    - target: {fileID: 3278007701938537318, guid: 5c0f427ccb9ae4220a006a4e853ba983, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3278007701938537318, guid: 5c0f427ccb9ae4220a006a4e853ba983, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873800471663412622, guid: 5c0f427ccb9ae4220a006a4e853ba983, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873800471663412622, guid: 5c0f427ccb9ae4220a006a4e853ba983, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873800471663412622, guid: 5c0f427ccb9ae4220a006a4e853ba983, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4854608507536951619, guid: 5c0f427ccb9ae4220a006a4e853ba983, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -7067,7 +7090,7 @@ AudioSource:
   m_GameObject: {fileID: 1957912137}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: f4b97fc2040cf4566a46695fada4336c, type: 2}
   m_audioClip: {fileID: 8300000, guid: 714f753e30e67445a99ae07be0b11557, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.397
