@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: When you pick up items I'll tell you what they do
+  m_text: Item stats are displayed here
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8e4a19c64a45449a48e4ccc0d917f649, type: 2}
   m_sharedMaterial: {fileID: 6491503740778059928, guid: 8e4a19c64a45449a48e4ccc0d917f649, type: 2}
