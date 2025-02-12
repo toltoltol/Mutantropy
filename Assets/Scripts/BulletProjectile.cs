@@ -33,4 +33,12 @@ public class BulletProjectile : MonoBehaviour
         // Move the projectile in the set direction
         transform.Translate( _speed * Time.deltaTime * _direction);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
