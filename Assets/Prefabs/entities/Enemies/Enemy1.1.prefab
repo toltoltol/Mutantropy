@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7851184055545451951}
   - component: {fileID: 2733008716507250097}
   m_Layer: 0
-  m_Name: Enemy1.3
+  m_Name: Enemy1.1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,8 +109,27 @@ MonoBehaviour:
   attackRange: 5
   attackProjectileSpeed: 7.5
   dropsList:
-  - {fileID: 6400626404903785981, guid: b2164c4bb0c024a8bb108c58c638de4e, type: 3}
-  - {fileID: 6360384295680157086, guid: 61849e9a2a531484784d1e502b8991d3, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  flashDuration: 0.1
 --- !u!114 &2829325549253949574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   stopDistance: 1
+  flip: 0
 --- !u!50 &8121822587008115800
 Rigidbody2D:
   serializedVersion: 4
