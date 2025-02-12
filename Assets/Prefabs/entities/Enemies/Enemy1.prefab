@@ -106,7 +106,7 @@ MonoBehaviour:
   attackPower: 1
   attackSpeed: 0.5
   moveSpeed: 0.5
-  attackRange: 5
+  attackRange: 3
   attackProjectileSpeed: 5
   dropsList:
   - {fileID: 6360384295680157086, guid: e5240d3fd3507473baca8d055648b888, type: 3}
@@ -232,7 +232,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.016046524, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -243,7 +243,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.90625, y: 0.96875}
+  m_Size: {x: 0.7586479, y: 0.96875}
   m_EdgeRadius: 0
 --- !u!114 &3399220082399287628
 MonoBehaviour:

@@ -102,11 +102,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 4
-  attackPower: 0.25
+  attackPower: 0.5
   attackSpeed: 1
   moveSpeed: 2
-  attackRange: 5
-  attackProjectileSpeed: 5
+  attackRange: 2
+  attackProjectileSpeed: 10
   dropsList:
   - {fileID: 6360384295680157086, guid: e5240d3fd3507473baca8d055648b888, type: 3}
   - {fileID: 6360384295680157086, guid: e5240d3fd3507473baca8d055648b888, type: 3}
@@ -235,7 +235,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.017024994, y: -0.17023075}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -246,5 +246,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.7730255, y: 0.6595385}
   m_EdgeRadius: 0
