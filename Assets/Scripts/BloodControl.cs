@@ -11,6 +11,7 @@ public class BloodControl : MonoBehaviour
     private SpriteRenderer _playerSpriteRenderer;
     private SpriteRenderer _spriteRenderer;
 
+    public float healthPointToShow;
     // Update is called once per frame
     private void Start()
     {
@@ -27,7 +28,7 @@ public class BloodControl : MonoBehaviour
 
     void Update()
     {
-        if (playerAttributes.maxHealth != 0 && playerAttributes.currentHealth / playerAttributes.maxHealth < 0.5f)
+        if (playerAttributes.maxHealth != 0 && playerAttributes.currentHealth / playerAttributes.maxHealth < healthPointToShow)
         {
             _spriteRenderer.enabled = true;
         } else {

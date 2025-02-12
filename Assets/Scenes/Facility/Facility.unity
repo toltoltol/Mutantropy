@@ -3410,10 +3410,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8922885822935259551, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: healthPointToShow
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 8954141935546353159, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
       propertyPath: playerAttributes
       value: 
       objectReference: {fileID: 350135332}
+    - target: {fileID: 8954141935546353159, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: healthPointToShow
+      value: 0.67
+      objectReference: {fileID: 0}
     - target: {fileID: 9016093704650660260, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
       propertyPath: m_FlipX
       value: 0
