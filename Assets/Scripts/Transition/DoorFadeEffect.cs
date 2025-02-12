@@ -6,11 +6,13 @@ public class DoorFadeEffect : MonoBehaviour
 {
     public float fadeDuration = 1f;
     private Image fadePanel;
+    private CanvasGroup canvasGroup;
 
     void Awake()
     {
         fadePanel = GetComponentInChildren<Image>();
-        fadePanel.color = new Color(0, 0, 0, 1);
+        canvasGroup = GetComponentInChildren<CanvasGroup>();
+        canvasGroup.alpha = 1f;
     }
 
     public void FadeIn(System.Action onFadeComplete = null)
@@ -32,11 +34,11 @@ public class DoorFadeEffect : MonoBehaviour
         {
             timer += Time.deltaTime;
             float alpha = Mathf.Lerp(startAlpha, endAlpha, timer / fadeDuration);
-            fadePanel.color = new Color(0, 0, 0, alpha);
+            canvasGroup.alpha = alpha;
             yield return null;
         }
 
-        fadePanel.color = new Color(0, 0, 0, endAlpha);
+        canvasGroup.alpha = endAlpha;
         if (onFadeComplete != null)
         {
             onFadeComplete();

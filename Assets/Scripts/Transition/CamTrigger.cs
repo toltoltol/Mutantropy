@@ -12,6 +12,7 @@ public class CamTrigger : MonoBehaviour
     {
         camControl = Camera.main.GetComponent<CamController>();
         fadeManager = GameObject.Find("FadeCanvas").GetComponent<DoorFadeEffect>();
+        fadeManager.FadeIn();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
