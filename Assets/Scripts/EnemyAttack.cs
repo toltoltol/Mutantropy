@@ -43,6 +43,14 @@ public class EnemyAttack : MonoBehaviour {
    
     // Cooldown time for firing
     public float fireCooldownTime;
+    
+    //Melee Range
+    public float meleeRange = 2f;
+    
+    //Melee shake variables
+    public float meleeShakeDuration = 0.4f;
+
+    public float meleeShakeMagnitude = 0.1f;
    
     // How much time is left until able to fire again 
     //TODO use attack speed from enemyattributes instead
@@ -66,23 +74,31 @@ public class EnemyAttack : MonoBehaviour {
 
     // Per every frame...
     void Update () {
-        if (!isMeleeEnemy)
+        
+        // If still some time left until can fire again
+        // reduce the time by the time since last
+        // frame 
+        if (fireCooldownTimeLeft > 0)
         {
-            // If still some time left until can fire again
-            // reduce the time by the time since last
-            // frame 
-            if (fireCooldownTimeLeft > 0)
+            fireCooldownTimeLeft -= Time.deltaTime;
+        }
+
+        //lol skip everything else if it is ranged enemy (these dont exist anymore)
+        if (isRangedEnemy)
+        {
+            if (transform.position == enemyPeek.openPosition1.position || transform.position == enemyPeek.openPosition2.position) { Shoot(); }
+            return; // Exit point if ranged enenemy
+        } else if (isMeleeEnemy)
+        {
+            if (Vector2.Distance(player.position, transform.position) <= meleeRange)
             {
-                fireCooldownTimeLeft -= Time.deltaTime;
+                MeleeShoot();
+                StartAttackAnimation();
             }
 
-            //lol skip everything else if it is ranged enemy
-            if (isRangedEnemy)
-            {
-                if (transform.position == enemyPeek.openPosition1.position || transform.position == enemyPeek.openPosition2.position) { Shoot(); }
-                return; // Exit point if ranged enenemy
-            }
-
+        }
+        else  //Is normal enemy
+        {
             // Generate number a random number between 0 and 1
             float randomSample = Random.Range(0f, 1f);
             // If auto-shoot probability is more than zero...
@@ -91,9 +107,9 @@ public class EnemyAttack : MonoBehaviour {
                 // If that random number is less than the 
                 // probability of shooting, then try to shoot
                 Shoot();
+                StartAttackAnimation();
             }
         }
-        StartAttackAnimation();
     }
 
     // Method for firing a projectile
@@ -119,6 +135,32 @@ public class EnemyAttack : MonoBehaviour {
 
     }
 
+    private void MeleeShoot()
+    {
+        // Melee only if the fire cooldown period
+        // has expired
+        if(fireCooldownTimeLeft <= 0) {
+            // Create a projectile object from 
+            // the shot prefab
+            
+            GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            projectile.transform.SetParent(transform);  //very important means melee attack follows enemy
+            BulletProjectile bulletProjectile = projectile.GetComponent<BulletProjectile>();
+            if (bulletProjectile != null)
+            {
+                bulletProjectile.Init(1, CalculateShootDirection(), 0f, _enemyAttributes.attackPower);
+
+            }
+
+            // Set time left until next shot
+            // to the cooldown time
+            fireCooldownTimeLeft = fireCooldownTime;
+            
+            //Lil shake animation because you cannot tell they melee without animation
+            StartCoroutine(ShakeTransform(transform, meleeShakeDuration, meleeShakeMagnitude));
+        }
+    }
+    
     public Vector2 CalculateShootDirection()
     {
         // Get the direction from the enemy (this.transform) to the player
@@ -160,6 +202,26 @@ public class EnemyAttack : MonoBehaviour {
                 animRunning = false;
             }
         }
+    }
+    
+    public IEnumerator ShakeTransform(Transform target, float duration, float magnitude)
+    {
+        Vector3 originalPosition = target.position;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            float offsetX = Random.Range(-1f, 1f) * magnitude;
+            float offsetY = Random.Range(-1f, 1f) * magnitude;
+
+            target.position = originalPosition + new Vector3(offsetX, offsetY, 0f);
+            elapsed += Time.deltaTime;
+
+            yield return null; // Wait for next frame
+        }
+
+        // Ensure object returns to original position
+        target.position = originalPosition;
     }
 }
 
