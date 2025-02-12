@@ -153,6 +153,10 @@ public class PlayerAttributes : MonoBehaviour
             maxHealth);
     }
 
+    public void IncreaseNothing()
+    {
+    }
+
 
     // Handle player death
     private void Die()
