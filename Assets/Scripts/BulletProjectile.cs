@@ -62,7 +62,7 @@ public class BulletProjectile : MonoBehaviour
 
             GameObject hitPopupTextObject = Instantiate(hitPopupText, spawnPosition, Quaternion.identity);
 
-            TextMeshProUGUI textComponent = hitPopupTextObject.GetComponentInChildren<TextMeshProUGUI>();
+            TextMeshPro textComponent = hitPopupTextObject.GetComponentInChildren<TextMeshPro>();
             if (textComponent != null)
             {
                 textComponent.text = damage.ToString("F1");
