@@ -24,6 +24,7 @@ namespace UI
         PlayerAttributes _playerAttributes;
 
         // Health value currently displayed
+        public TextMeshProUGUI currentHealthText;
         
         //Other stats text elements
         public TextMeshProUGUI dmgText;
@@ -55,6 +56,7 @@ namespace UI
         // Update is called once per frame
         void Update()
         {
+            currentHealthText.text = _playerAttributes.currentHealth.ToString("F1");
             dmgText.text = _playerAttributes.attackPower.ToString("F2");
             atkSpeedText.text = _playerAttributes.attackSpeed.ToString("F2");
             atkRangeText.text = _playerAttributes.attackRange.ToString("F2");

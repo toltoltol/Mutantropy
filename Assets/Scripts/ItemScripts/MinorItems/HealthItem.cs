@@ -12,11 +12,15 @@ namespace ItemScripts.MinorItems
 
         public override void UseItem(PlayerAttributes playerAttributes)
         {
-            playerAttributes.IncreaseHealth(strength);
-            
-            UpdateItemInfoBox();
-            
-            Destroy(gameObject);
+            if (playerAttributes.currentHealth != playerAttributes.maxHealth)
+            {
+                playerAttributes.IncreaseHealth(strength);
+
+                UpdateItemInfoBox();
+
+                Destroy(gameObject);
+
+            }
         }
     }
 }
