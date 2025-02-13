@@ -19,12 +19,11 @@ public class CamTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            fadeManager.FadeOut(() => {  // Fade out before changing camera postitions
-                camControl.minPos += newCamPos;
-                camControl.maxPos += newCamPos;
-                other.transform.position += newPlayerPos;
-                fadeManager.FadeIn(); // Then fade in after arriving in the next room
-            });
+            fadeManager.FadeOut();  // Fade out before changing camera postitions
+            camControl.minPos += newCamPos;
+            camControl.maxPos += newCamPos;
+            other.transform.position += newPlayerPos;
+            fadeManager.FadeIn(); // Then fade in after arriving in the next room
         }
     }
 }

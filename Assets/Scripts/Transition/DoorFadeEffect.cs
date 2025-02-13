@@ -4,7 +4,7 @@ using System.Collections;
 
 public class DoorFadeEffect : MonoBehaviour
 {
-    public float fadeDuration = 1f;
+    public float fadeDuration = 0.2f;
     private Image fadePanel;
     private CanvasGroup canvasGroup;
 
@@ -22,7 +22,7 @@ public class DoorFadeEffect : MonoBehaviour
 
     public void FadeOut(System.Action onFadeComplete = null)
     {
-        StartCoroutine(FadeRoutine(0f, 1f, onFadeComplete));
+        StartCoroutine(FadeRoutine(1f, 1f, onFadeComplete));
     }
 
     private IEnumerator FadeRoutine(float startAlpha, float endAlpha, System.Action onFadeComplete)
