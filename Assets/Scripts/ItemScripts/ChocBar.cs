@@ -6,7 +6,7 @@ namespace ItemScripts
     {
         private void Start()
         {
-            itemEffectDescription = "Ate Chocbar: +Atk.Speed +Proj.Speed -Range +Movespeed";
+            itemEffectDescription = "Ate Chocbar: +Atk.Speed +Proj.Speed -Atk.Range +Movespeed";
         }
         
         public override void UseItem(PlayerAttributes playerAttributes)
@@ -15,7 +15,7 @@ namespace ItemScripts
             
             playerAttributes.IncreaseAttackProjectileSpeed(strength / 4);
             
-            playerAttributes.IncreaseAttackRange(-strength / 2);
+            playerAttributes.IncreaseAttackRange(-strength / 5);
 
             playerAttributes.IncreaseMoveSpeed(strength / 10);
             

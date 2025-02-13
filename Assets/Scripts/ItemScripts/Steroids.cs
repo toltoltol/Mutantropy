@@ -6,18 +6,18 @@ namespace ItemScripts
     {
         private void Start()
         {
-            itemEffectDescription = "Ate Steroids: -Max Health +DMG +Atk.Speed +Range +Movespeed";
+            itemEffectDescription = "Ate Steroids: -Max Health +DMG +Atk.Speed +Atk.Range +Movespeed";
         }
         
         public override void UseItem(PlayerAttributes playerAttributes)
         {
             if (playerAttributes.currentHealth <= 1 || playerAttributes.maxHealth <= 1)
             {
-                playerAttributes.IncreaseAttackPower(strength * 2);
+                playerAttributes.IncreaseAttackPower(strength);
 
                 playerAttributes.IncreaseAttackSpeed(strength / 4);
 
-                playerAttributes.IncreaseAttackRange(strength / 2);
+                playerAttributes.IncreaseAttackRange(strength / 5);
 
                 playerAttributes.IncreaseMoveSpeed(strength / 10);
             }
@@ -27,11 +27,11 @@ namespace ItemScripts
 
                 playerAttributes.maxHealth -= strength;
 
-                playerAttributes.IncreaseAttackPower(strength * 2);
+                playerAttributes.IncreaseAttackPower(strength);
 
                 playerAttributes.IncreaseAttackSpeed(strength / 4);
 
-                playerAttributes.IncreaseAttackRange(strength / 2);
+                playerAttributes.IncreaseAttackRange(strength / 5);
 
                 playerAttributes.IncreaseMoveSpeed(strength / 10);
             }

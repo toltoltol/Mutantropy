@@ -12,7 +12,7 @@ namespace ItemScripts.MinorItems
 
         public override void UseItem(PlayerAttributes playerAttributes)
         {
-            playerAttributes.IncreaseAttackPower(strength);
+            playerAttributes.IncreaseAttackPower(strength / 2);
             
             UpdateItemInfoBox();
 

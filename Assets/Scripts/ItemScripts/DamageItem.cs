@@ -13,7 +13,7 @@ namespace ItemScripts
         {
             playerAttributes.maxHealth += strength;
 
-            playerAttributes.IncreaseAttackPower(strength);
+            playerAttributes.IncreaseAttackPower(strength / 2);
             
             UpdateItemInfoBox();
             

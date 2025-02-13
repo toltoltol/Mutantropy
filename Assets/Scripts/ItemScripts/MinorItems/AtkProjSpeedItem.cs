@@ -9,7 +9,7 @@ namespace ItemScripts.MinorItems
     {
         private void Start()
         {
-            itemEffectDescription = "Gulped Proj.Speed Item: +=Proj.Speed";
+            itemEffectDescription = "Gulped Proj.Speed Item: +Proj.Speed";
         }
 
         public override void UseItem(PlayerAttributes playerAttributes)
