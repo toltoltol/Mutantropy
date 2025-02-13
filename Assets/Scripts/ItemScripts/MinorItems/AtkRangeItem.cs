@@ -8,12 +8,12 @@ namespace ItemScripts.MinorItems
     {
         private void Start()
         {
-            itemEffectDescription = "Gulped Atk. Range Item: +Atk.Range";
+            itemEffectDescription = "Ate Atk.Range Item: +Atk.Range";
         }
 
         public override void UseItem(PlayerAttributes playerAttributes)
         {
-            playerAttributes.IncreaseAttackRange(strength);
+            playerAttributes.IncreaseAttackRange(strength / 2);
 
             UpdateItemInfoBox();
 

@@ -104,7 +104,7 @@ MonoBehaviour:
   health: 4
   attackPower: 0.5
   attackSpeed: 1
-  moveSpeed: 2
+  moveSpeed: 1.5
   attackRange: 2
   attackProjectileSpeed: 10
   dropsList:
@@ -202,7 +202,10 @@ MonoBehaviour:
   isMeleeEnemy: 0
   projectilePrefab: {fileID: 6705652931990581667, guid: 7f0fd71fe4d414878b3b2d80e78a4c6a, type: 3}
   autoShootProbability: 0.5
-  fireCooldownTime: 4
+  fireCooldownTime: 3
+  meleeRange: 2
+  meleeShakeDuration: 0.4
+  meleeShakeMagnitude: 0.1
 --- !u!61 &1760889027788722086
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -9,12 +9,12 @@ namespace ItemScripts.MinorItems
     {
         private void Start()
         {
-            itemEffectDescription = "Gulped Atk. Projectile Speed Item: +Atk. Projectile Speed";
+            itemEffectDescription = "Gulped Proj.Speed Item: +=Proj.Speed";
         }
 
         public override void UseItem(PlayerAttributes playerAttributes)
         {
-            playerAttributes.IncreaseAttackProjectileSpeed(strength);
+            playerAttributes.IncreaseAttackProjectileSpeed(strength / 4);
 
             UpdateItemInfoBox();
 

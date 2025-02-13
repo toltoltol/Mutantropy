@@ -16,25 +16,25 @@ public class PlayerAttributes : MonoBehaviour
 
     public float attackPower = 1f;
     public float minAttackPower = 0.1f;
-    public float maxAttackPower = 1000f;
+    public float maxAttackPower = 100f;
 
     //Attack cooldown = 1 over attack speed (inverse)
-    public float attackSpeed = 0.5f;
-    public float minAttackSpeed = 3.0f;
+    public float attackSpeed = 1f;
+    public float minAttackSpeed = 0.65f;
     public float maxAttackSpeed = 10.0f;
 
     //Measured in seconds the projectile exists for
-    public float attackRange = 5.0f;
+    public float attackRange = 1.0f;
     public float minAttackRange = 0.5f;
     public float maxAttackRange = 10.0f;
 
     public float attackProjectileSpeed = 5.0f;
-    public float minAttackProjectileSpeed = 0.5f;
-    public float maxAttackProjectileSpeed = 10.0f;
+    public float minAttackProjectileSpeed = 0.65f;
+    public float maxAttackProjectileSpeed = 25.0f;
 
     public float moveSpeed = 1.0f;
-    public float minMoveSpeed = 0.5f;
-    public float maxMoveSpeed = 2.0f;
+    public float minMoveSpeed = 0.65f;
+    public float maxMoveSpeed = 3.0f;
 
     // New boolean to track if player is moving
     public bool isMoving;

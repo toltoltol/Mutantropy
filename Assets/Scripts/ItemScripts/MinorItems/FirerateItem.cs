@@ -7,12 +7,12 @@ namespace ItemScripts.MinorItems
     {
         private void Start()
         {
-            itemEffectDescription = "Ate Firerate Item: +Firerate";
+            itemEffectDescription = "Ate Atk.Speed Item: +Atk.Speed";
         }
 
         public override void UseItem(PlayerAttributes playerAttributes)
         {
-            playerAttributes.IncreaseAttackSpeed(strength);
+            playerAttributes.IncreaseAttackSpeed(strength / 4);
             
             UpdateItemInfoBox();
             

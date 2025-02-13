@@ -103,11 +103,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  attackPower: 1
+  attackPower: 1.5
   attackSpeed: 0.75
   moveSpeed: 0.75
   attackRange: 3
-  attackProjectileSpeed: 5
+  attackProjectileSpeed: 6.5
   dropsList:
   - {fileID: 6360384295680157086, guid: e5240d3fd3507473baca8d055648b888, type: 3}
   - {fileID: 6360384295680157086, guid: e5240d3fd3507473baca8d055648b888, type: 3}
@@ -199,7 +199,10 @@ MonoBehaviour:
   isMeleeEnemy: 0
   projectilePrefab: {fileID: 6705652931990581667, guid: 7f0fd71fe4d414878b3b2d80e78a4c6a, type: 3}
   autoShootProbability: 0.5
-  fireCooldownTime: 2
+  fireCooldownTime: 3.5
+  meleeRange: 2
+  meleeShakeDuration: 0.4
+  meleeShakeMagnitude: 0.1
 --- !u!61 &727748774930443508
 BoxCollider2D:
   m_ObjectHideFlags: 0

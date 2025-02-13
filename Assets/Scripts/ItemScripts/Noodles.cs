@@ -6,14 +6,14 @@ namespace ItemScripts
     {
         private void Start()
         {
-            itemEffectDescription = "Ate Noodles: +Health +Max Health";
+            itemEffectDescription = "Ate Noodles: +Max Health +Health";
         }
         
         public override void UseItem(PlayerAttributes playerAttributes)
         {
-            playerAttributes.currentHealth += strength;
-
             playerAttributes.maxHealth += strength;
+
+            playerAttributes.currentHealth += strength;
             
             UpdateItemInfoBox();
             

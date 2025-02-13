@@ -6,11 +6,13 @@ namespace ItemScripts
     {
         private void Start()
         {
-            itemEffectDescription = "Used Damage Item: +DMG";
+            itemEffectDescription = "Used Strength Item: +Max Health +DMG";
         }
         
         public override void UseItem(PlayerAttributes playerAttributes)
         {
+            playerAttributes.maxHealth += strength;
+
             playerAttributes.IncreaseAttackPower(strength);
             
             UpdateItemInfoBox();

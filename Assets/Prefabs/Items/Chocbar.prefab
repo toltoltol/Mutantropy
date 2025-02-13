@@ -143,5 +143,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fe7bbe36fa144d591c61f04c1dc73c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strength: 0.25
+  strength: 1
   itemEffectDescription: 

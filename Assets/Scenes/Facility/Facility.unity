@@ -3331,12 +3331,24 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 435024339808618884, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: minMoveSpeed
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 435024339808618884, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
       propertyPath: maxAttackSpeed
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 435024339808618884, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
       propertyPath: minAttackSpeed
       value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 435024339808618884, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: maxAttackProjectileSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 435024339808618884, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: minAttackProjectileSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1310353303851982720, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
       propertyPath: m_LocalPosition.z
