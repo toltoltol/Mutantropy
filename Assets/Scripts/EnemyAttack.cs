@@ -116,23 +116,64 @@ public class EnemyAttack : MonoBehaviour {
     public void Shoot() {
         // Shoot only if the fire cooldown period
         // has expired
+        
         if(fireCooldownTimeLeft <= 0) {
             // Create a projectile object from 
             // the shot prefab
-            
-            GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            BulletProjectile bulletProjectile = projectile.GetComponent<BulletProjectile>();
-            if (bulletProjectile != null)
+            if (gameObject.CompareTag("Boss"))
             {
-                bulletProjectile.Init(_enemyAttributes.attackRange, CalculateShootDirection(), _enemyAttributes.attackProjectileSpeed, _enemyAttributes.attackPower);
+                float attackChance = 0.5f;
 
+                if (Random.value < attackChance)
+                {
+                    BossRingAttack();
+                } else {
+                    GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                    BulletProjectile bulletProjectile = projectile.GetComponent<BulletProjectile>();
+                    if (bulletProjectile != null)
+                    {
+                        bulletProjectile.Init(_enemyAttributes.attackRange, CalculateShootDirection(), _enemyAttributes.attackProjectileSpeed, _enemyAttributes.attackPower);
+
+                    }
+                }
             }
+            else
+            {
+                //Normal enemy attack
+                GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                BulletProjectile bulletProjectile = projectile.GetComponent<BulletProjectile>();
+                if (bulletProjectile != null)
+                {
+                    bulletProjectile.Init(_enemyAttributes.attackRange, CalculateShootDirection(), _enemyAttributes.attackProjectileSpeed, _enemyAttributes.attackPower);
 
+                }
+            }
             // Set time left until next shot
             // to the cooldown time
             fireCooldownTimeLeft = fireCooldownTime;   
         }
 
+    }
+
+    private void BossRingAttack()
+    {
+        int bulletCount = 12; // Number of bullets in the ring
+        float angleStep = 360f / bulletCount; // Angle between bullets
+ 
+
+        for (int i = 0; i < bulletCount; i++)
+        {
+            float angle = i * angleStep;
+            Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+
+            GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            BulletProjectile bulletProjectile = projectile.GetComponent<BulletProjectile>();
+
+            if (bulletProjectile != null)
+            {
+                bulletProjectile.Init(_enemyAttributes.attackRange, direction, _enemyAttributes.attackProjectileSpeed, _enemyAttributes.attackPower);
+            }
+        }
     }
 
     private void MeleeShoot()
