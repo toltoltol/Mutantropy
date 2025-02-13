@@ -57,7 +57,7 @@ namespace transition
         private IEnumerator DelayedReenableEnemies(Collider2D other)
         {
             // Wait for 0.2 seconds
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(0.4f);
 
             // Call UpdateMonoBehaviors after delay
             UpdateMonoBehavoirs(true, other.GetComponents<MonoBehaviour>());
