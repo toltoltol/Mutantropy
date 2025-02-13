@@ -27,7 +27,7 @@ namespace transition
                 // Add the enemy to the list if not already added
                 if (!enemiesInRange.Contains(other.gameObject))
                 {
-                    UpdateMonoBehavoirs(true,other.GetComponents<MonoBehaviour>());
+                    StartCoroutine(DelayedReenableEnemies(other));
                     enemiesInRange.Add(other.gameObject);
                 }
             }
@@ -52,6 +52,15 @@ namespace transition
             {
                 script.enabled = enableScripts;
             }
+        }
+
+        private IEnumerator DelayedReenableEnemies(Collider2D other)
+        {
+            // Wait for 0.2 seconds
+            yield return new WaitForSeconds(0.8f);
+
+            // Call UpdateMonoBehaviors after delay
+            UpdateMonoBehavoirs(true, other.GetComponents<MonoBehaviour>());
         }
         
     }
