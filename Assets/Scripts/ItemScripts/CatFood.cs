@@ -7,16 +7,18 @@ namespace ItemScripts
     {
         private void Start()
         {
-            itemEffectDescription = "Ate catfood: +Firerate +Bullet Speed -DMG";
+            itemEffectDescription = "Ate catfood: -DMG +Atk.Speed +Proj.Speed +Movespeed";
         }
 
         public override void UseItem(PlayerAttributes playerAttributes)
         {
             playerAttributes.IncreaseAttackPower(-(strength / 2));
             
-            playerAttributes.IncreaseAttackSpeed(strength);
+            playerAttributes.IncreaseAttackSpeed(strength / 2);
             
-            playerAttributes.IncreaseAttackProjectileSpeed(strength / 2);
+            playerAttributes.IncreaseAttackProjectileSpeed(strength / 4);
+
+            playerAttributes.IncreaseMoveSpeed(strength / 10);
 
             UpdateItemInfoBox();
             

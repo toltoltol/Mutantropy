@@ -101,15 +101,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a51c9ec00b646dd9453d45c9694216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 3
   attackPower: 0.5
-  attackSpeed: 0.5
-  moveSpeed: 0.75
+  attackSpeed: 1.25
+  moveSpeed: 1
   attackRange: 5
   attackProjectileSpeed: 8
   dropsList:
-  - {fileID: 6400626404903785981, guid: b2164c4bb0c024a8bb108c58c638de4e, type: 3}
-  - {fileID: 6360384295680157086, guid: 61849e9a2a531484784d1e502b8991d3, type: 3}
+  - {fileID: 6360384295680157086, guid: faf2c348426cd44639551cc950fd16a6, type: 3}
+  - {fileID: 6360384295680157086, guid: faf2c348426cd44639551cc950fd16a6, type: 3}
+  - {fileID: 6360384295680157086, guid: 61743ad84ba8444f996ffb9d232a882f, type: 3}
+  - {fileID: 6360384295680157086, guid: 61743ad84ba8444f996ffb9d232a882f, type: 3}
+  - {fileID: 2950501715309014171, guid: ec2fc20945639384a9280733fb48f0ae, type: 3}
+  - {fileID: 2950501715309014171, guid: ec2fc20945639384a9280733fb48f0ae, type: 3}
+  - {fileID: 8755576380263585016, guid: 96ecdfe448dda4e4f8fbefaf19e649c8, type: 3}
+  - {fileID: 8755576380263585016, guid: 96ecdfe448dda4e4f8fbefaf19e649c8, type: 3}
+  - {fileID: 5132876420313722990, guid: 02ff5ad183c91a54e99111f657ed7031, type: 3}
+  - {fileID: 5132876420313722990, guid: 02ff5ad183c91a54e99111f657ed7031, type: 3}
+  - {fileID: 5132876420313722990, guid: 02ff5ad183c91a54e99111f657ed7031, type: 3}
+  - {fileID: 5132876420313722990, guid: 02ff5ad183c91a54e99111f657ed7031, type: 3}
+  - {fileID: 5132876420313722990, guid: 02ff5ad183c91a54e99111f657ed7031, type: 3}
+  - {fileID: 5132876420313722990, guid: 02ff5ad183c91a54e99111f657ed7031, type: 3}
+  - {fileID: 5132876420313722990, guid: 02ff5ad183c91a54e99111f657ed7031, type: 3}
+  - {fileID: 5132876420313722990, guid: 02ff5ad183c91a54e99111f657ed7031, type: 3}
+  - {fileID: 5132876420313722990, guid: 02ff5ad183c91a54e99111f657ed7031, type: 3}
+  - {fileID: 5132876420313722990, guid: 02ff5ad183c91a54e99111f657ed7031, type: 3}
+  - {fileID: 5132876420313722990, guid: 02ff5ad183c91a54e99111f657ed7031, type: 3}
+  - {fileID: 5132876420313722990, guid: 02ff5ad183c91a54e99111f657ed7031, type: 3}
+  flashDuration: 0.1
 --- !u!114 &4324804815498648423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +200,10 @@ MonoBehaviour:
   isMeleeEnemy: 0
   projectilePrefab: {fileID: 6705652931990581667, guid: 7f0fd71fe4d414878b3b2d80e78a4c6a, type: 3}
   autoShootProbability: 0.5
-  fireCooldownTime: 4
+  fireCooldownTime: 3.5
+  meleeRange: 2
+  meleeShakeDuration: 0.4
+  meleeShakeMagnitude: 0.1
 --- !u!61 &7638536247620466917
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -214,7 +236,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.17023069}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -225,5 +247,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.6595386}
   m_EdgeRadius: 0

@@ -7,12 +7,12 @@ namespace ItemScripts.MinorItems
     {
         private void Start()
         {
-            itemEffectDescription = "Chewed Speed Item: +Speed";
+            itemEffectDescription = "Chewed Movespeed Item: +Movespeed";
         }
 
         public override void UseItem(PlayerAttributes playerAttributes)
         {
-            playerAttributes.IncreaseMoveSpeed(strength);
+            playerAttributes.IncreaseMoveSpeed(strength / 10);
 
             UpdateItemInfoBox();
             
