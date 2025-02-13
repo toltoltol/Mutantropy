@@ -13,7 +13,7 @@ namespace ItemScripts
         {
             playerAttributes.IncreaseAttackSpeed(strength / 2);
             
-            playerAttributes.IncreaseAttackProjectileSpeed(strength / 4);
+            playerAttributes.IncreaseAttackProjectileSpeed(strength / 10);
             
             playerAttributes.IncreaseAttackRange(-strength / 5);
 

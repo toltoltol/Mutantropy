@@ -26,12 +26,14 @@ namespace UI
         // Health value currently displayed
         
         //Other stats text elements
-        public TextMeshProUGUI speedText;
-        public TextMeshProUGUI atkSpeedText;
         public TextMeshProUGUI dmgText;
+        public TextMeshProUGUI atkSpeedText;
+        public TextMeshProUGUI atkRangeText;
+        public TextMeshProUGUI atkProjectileSpeedText;
+        public TextMeshProUGUI speedText;
 
 
-        
+
 
         // Use this for initialization
         void Start()
@@ -53,9 +55,11 @@ namespace UI
         // Update is called once per frame
         void Update()
         {
-            speedText.text = _playerAttributes.moveSpeed.ToString("F1");
-            atkSpeedText.text = _playerAttributes.attackSpeed.ToString("F1");
-            dmgText.text = _playerAttributes.attackPower.ToString("F1");
+            dmgText.text = _playerAttributes.attackPower.ToString("F2");
+            atkSpeedText.text = _playerAttributes.attackSpeed.ToString("F2");
+            atkRangeText.text = _playerAttributes.attackRange.ToString("F2");
+            atkProjectileSpeedText.text = _playerAttributes.attackProjectileSpeed.ToString("F2");
+            speedText.text = _playerAttributes.moveSpeed.ToString("F2");
             // // Display the score
             // hudScore.text = "Score: " + scoreInfoProvider.score;
             //
