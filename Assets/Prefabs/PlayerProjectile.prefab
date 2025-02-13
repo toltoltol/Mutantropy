@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  hitPopupText: {fileID: 4559386984403127747, guid: c0de71cd70435400db104eba689c2412, type: 3}
 --- !u!50 &5674689668010780127
 Rigidbody2D:
   serializedVersion: 4
