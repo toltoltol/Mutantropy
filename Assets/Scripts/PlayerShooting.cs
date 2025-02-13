@@ -24,33 +24,57 @@ public class PlayerShooting : MonoBehaviour
         _fireCooldown = 1 / _playerAttributes.attackSpeed;
     }
 
+    //This has been deprecated because diagonal shooting is buggy 
+    // void Update()
+    // {
+    //     
+    //     if (Time.time >= _nextFireTime)
+    //     {
+    //         // Accumulate input over the buffer time
+    //         _inputTimer += Time.deltaTime;
+    //
+    //         if (_inputTimer >= inputBufferTime)
+    //         {
+    //             Vector2 direction = new Vector2(_horizontalInput, _verticalInput);
+    //             if (direction != Vector2.zero)
+    //             {
+    //                 FireProjectile(direction.normalized);
+    //                 _fireCooldown = 1 / _playerAttributes.attackSpeed;
+    //                 _nextFireTime = Time.time + _fireCooldown;
+    //             }
+    //
+    //             // Reset input after processing
+    //             _horizontalInput = 0f;
+    //             _verticalInput = 0f;
+    //             _inputTimer = 0f;
+    //         }
+    //
+    //         // Update the input values during the buffer time
+    //         _horizontalInput += (Input.GetKey(KeyCode.RightArrow) ? 1f : 0f) + (Input.GetKey(KeyCode.LeftArrow) ? -1f : 0f);
+    //         _verticalInput += (Input.GetKey(KeyCode.UpArrow) ? 1f : 0f) + (Input.GetKey(KeyCode.DownArrow) ? -1f : 0f);
+    //     }
+    // }
+
     void Update()
     {
-        
         if (Time.time >= _nextFireTime)
         {
-            // Accumulate input over the buffer time
-            _inputTimer += Time.deltaTime;
-
-            if (_inputTimer >= inputBufferTime)
+            _horizontalInput += (Input.GetKey(KeyCode.RightArrow) ? 1f : 0f) + (Input.GetKey(KeyCode.LeftArrow) ? -1f : 0f);
+            _verticalInput += (Input.GetKey(KeyCode.UpArrow) ? 1f : 0f) + (Input.GetKey(KeyCode.DownArrow) ? -1f : 0f);
+            
+            Vector2 direction = new Vector2(_horizontalInput, _verticalInput);
+            if (direction != Vector2.zero)
             {
-                Vector2 direction = new Vector2(_horizontalInput, _verticalInput);
-                if (direction != Vector2.zero)
-                {
-                    FireProjectile(direction.normalized);
-                    _fireCooldown = 1 / _playerAttributes.attackSpeed;
-                    _nextFireTime = Time.time + _fireCooldown;
-                }
-
+                FireProjectile(direction.normalized);
+                _fireCooldown = 1 / _playerAttributes.attackSpeed;
+                _nextFireTime = Time.time + _fireCooldown;
                 // Reset input after processing
                 _horizontalInput = 0f;
                 _verticalInput = 0f;
                 _inputTimer = 0f;
             }
 
-            // Update the input values during the buffer time
-            _horizontalInput += (Input.GetKey(KeyCode.RightArrow) ? 1f : 0f) + (Input.GetKey(KeyCode.LeftArrow) ? -1f : 0f);
-            _verticalInput += (Input.GetKey(KeyCode.UpArrow) ? 1f : 0f) + (Input.GetKey(KeyCode.DownArrow) ? -1f : 0f);
+            
         }
     }
 
