@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerAttributes : MonoBehaviour
 {
+    //Disabled cause it breaks going to and from main menu
     // Singleton object
-    public static PlayerAttributes Instance;
+    // public static PlayerAttributes Instance;
 
     // Player stats with boundaries
     public float maxHealth = 12f;
@@ -46,18 +47,18 @@ public class PlayerAttributes : MonoBehaviour
     private Color _color;
     public float flashDuration = 0.1f;
 
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
+    // void Awake()
+    // {
+    //     if (Instance == null)
+    //     {
+    //         Instance = this;
+    //         DontDestroyOnLoad(gameObject);
+    //     }
+    //     else if (Instance != this)
+    //     {
+    //         Destroy(gameObject);
+    //     }
+    // }
 
     void Start()
     {
