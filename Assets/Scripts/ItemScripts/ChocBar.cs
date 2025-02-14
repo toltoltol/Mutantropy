@@ -17,7 +17,7 @@ namespace ItemScripts
             
             playerAttributes.IncreaseAttackRange(-strength / 10);
 
-            playerAttributes.IncreaseMoveSpeed(strength / 20);
+            playerAttributes.IncreaseMoveSpeed(strength / 10);
             
             UpdateItemInfoBox();
             

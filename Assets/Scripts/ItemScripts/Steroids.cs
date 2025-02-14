@@ -13,13 +13,13 @@ namespace ItemScripts
         {
             if (playerAttributes.currentHealth <= 1 || playerAttributes.maxHealth <= 1)
             {
-                playerAttributes.IncreaseAttackPower(strength);
+                playerAttributes.IncreaseAttackPower(strength / (3/4));
 
                 playerAttributes.IncreaseAttackSpeed(strength / 4);
 
                 playerAttributes.IncreaseAttackRange(strength / 10);
 
-                playerAttributes.IncreaseMoveSpeed(strength / 20);
+                playerAttributes.IncreaseMoveSpeed(strength / 10);
             }
             else
             {
@@ -27,7 +27,7 @@ namespace ItemScripts
 
                 playerAttributes.maxHealth -= strength;
 
-                playerAttributes.IncreaseAttackPower(strength);
+                playerAttributes.IncreaseAttackPower(strength  / (3/4));
 
                 playerAttributes.IncreaseAttackSpeed(strength / 4);
 
