@@ -86,7 +86,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (playerAttributes == null) return;
 
-        HandleAttackInput();
+        // HandleAttackInput();
 
         if (isAttacking) return; // Prevent movement animation during attack
 
@@ -125,18 +125,18 @@ public class PlayerControl : MonoBehaviour
         animRenderer.sprite = walkSprites[frameIndex];
     }
 
-    private void HandleAttackInput()
-    {
-        if (Time.time < attackEndTime) return; // Wait until previous attack is done
+    // private void HandleAttackInput()
+    // {
+    //     if (Time.time < attackEndTime) return; // Wait until previous attack is done
+    //
+    //     if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) ||
+    //         Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+    //     {
+    //         StartCoroutine(AttackAnimation());
+    //     }
+    // }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) ||
-            Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            StartCoroutine(AttackAnimation());
-        }
-    }
-
-    private IEnumerator AttackAnimation()
+    public IEnumerator AttackAnimation()
     {
         isAttacking = true;
         attackEndTime = Time.time + attackDuration;

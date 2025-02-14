@@ -3499,6 +3499,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8433540163498240129, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: firepoint
+      value: 
+      objectReference: {fileID: 2039339406}
+    - target: {fileID: 8433540163498240129, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
       propertyPath: walkSprites.Array.size
       value: 8
       objectReference: {fileID: 0}

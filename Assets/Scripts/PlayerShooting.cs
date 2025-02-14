@@ -9,6 +9,7 @@ public class PlayerShooting : MonoBehaviour
     private float _nextFireTime = 0f;
     
     private PlayerAttributes _playerAttributes;
+    private PlayerControl _playerControl;
     public AudioSource audioSource;  // Reference to AudioSource
     public AudioClip shootSound;     // Reference to shooting sound
 
@@ -21,6 +22,7 @@ public class PlayerShooting : MonoBehaviour
     private void Start()
     {
         _playerAttributes = GetComponent<PlayerAttributes>();
+        _playerControl = GetComponent<PlayerControl>();
         _fireCooldown = 1 / _playerAttributes.attackSpeed;
     }
 
@@ -84,6 +86,7 @@ public class PlayerShooting : MonoBehaviour
         BulletProjectile bulletProjectile = projectile.GetComponent<BulletProjectile>();
         
         bulletProjectile.Init(_playerAttributes.attackRange, direction.normalized, _playerAttributes.attackProjectileSpeed + 4, _playerAttributes.attackPower);
+        StartCoroutine(_playerControl.AttackAnimation());
 
         // Play the shooting sound
         if (audioSource != null && shootSound != null)
