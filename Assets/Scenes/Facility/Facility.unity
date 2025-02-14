@@ -3439,6 +3439,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4268158636470563572, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: firePoint
+      value: 
+      objectReference: {fileID: 2039339406}
+    - target: {fileID: 4268158636470563572, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
       propertyPath: shootSound
       value: 
       objectReference: {fileID: 8300000, guid: 5924f835e434942e480b166866c569d5, type: 3}
@@ -21497,6 +21501,11 @@ Transform:
   - {fileID: 1252724403}
   m_Father: {fileID: 1576478135}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2039339406 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7524540513818509941, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+  m_PrefabInstance: {fileID: 350135326}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2042883137
 PrefabInstance:
   m_ObjectHideFlags: 0
