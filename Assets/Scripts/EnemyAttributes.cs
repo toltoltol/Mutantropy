@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyAttributes : MonoBehaviour
 {
@@ -68,14 +69,23 @@ public class EnemyAttributes : MonoBehaviour
     // Handle enemy death
     private void Die()
     {
-        Debug.Log("Enemy has died.");
-        
-        // Add death handling logic (e.g., remove enemy from the game)
-        
-        // drop an item
-        DropItem();
-        
-        Destroy(gameObject);
+        if (!gameObject.CompareTag("Boss"))
+        {
+            Debug.Log("Enemy has died.");
+
+            // Add death handling logic (e.g., remove enemy from the game)
+
+            // drop an item
+            DropItem();
+
+            Destroy(gameObject);
+        }
+        else {
+            Destroy(gameObject);
+
+            SceneManager.LoadScene("WinScreen");
+        }
+
     }
     
     private void DropItem()
