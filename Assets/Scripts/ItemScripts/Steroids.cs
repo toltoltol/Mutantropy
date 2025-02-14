@@ -13,13 +13,13 @@ namespace ItemScripts
         {
             if (playerAttributes.currentHealth <= 1 || playerAttributes.maxHealth <= 1)
             {
-                playerAttributes.IncreaseAttackPower((strength / 4) * 3);
+                playerAttributes.IncreaseAttackPower(strength / 2);
 
-                playerAttributes.IncreaseAttackSpeed(strength / 4);
+                playerAttributes.IncreaseAttackSpeed(strength / 5);
 
                 playerAttributes.IncreaseAttackRange(strength / 10);
 
-                playerAttributes.IncreaseMoveSpeed(strength / 20);
+                playerAttributes.IncreaseMoveSpeed(strength / 10);
             }
             else
             {
@@ -27,13 +27,13 @@ namespace ItemScripts
 
                 playerAttributes.maxHealth -= strength;
 
-                playerAttributes.IncreaseAttackPower((strength  / 4) * 3);
+                playerAttributes.IncreaseAttackPower(strength  / 2);
 
-                playerAttributes.IncreaseAttackSpeed(strength / 4);
+                playerAttributes.IncreaseAttackSpeed(strength / 5);
 
                 playerAttributes.IncreaseAttackRange(strength / 10);
 
-                playerAttributes.IncreaseMoveSpeed(strength / 20);
+                playerAttributes.IncreaseMoveSpeed(strength / 10);
             }
             
             UpdateItemInfoBox();

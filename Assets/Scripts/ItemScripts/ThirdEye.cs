@@ -11,7 +11,7 @@ namespace ItemScripts
         
         public override void UseItem(PlayerAttributes playerAttributes)
         {
-            playerAttributes.IncreaseAttackSpeed(strength / 4);
+            playerAttributes.IncreaseAttackSpeed(strength / 5);
 
             playerAttributes.IncreaseAttackProjectileSpeed(strength / 5);
 

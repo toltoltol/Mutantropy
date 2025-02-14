@@ -105,7 +105,7 @@ MonoBehaviour:
   health: 80
   attackPower: 2
   attackSpeed: 4
-  moveSpeed: 2
+  moveSpeed: 1.75
   attackRange: 5
   attackProjectileSpeed: 12
   dropsList:
