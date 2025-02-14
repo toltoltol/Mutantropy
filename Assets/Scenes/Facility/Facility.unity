@@ -3203,6 +3203,10 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 5794553862863995112, guid: 5c0f427ccb9ae4220a006a4e853ba983, type: 3}
+      propertyPath: currentHealthText
+      value: 
+      objectReference: {fileID: 310828711}
     - target: {fileID: 5798399573732664575, guid: 5c0f427ccb9ae4220a006a4e853ba983, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3376,6 +3380,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c0f427ccb9ae4220a006a4e853ba983, type: 3}
+--- !u!114 &310828711 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8782909936668165442, guid: 5c0f427ccb9ae4220a006a4e853ba983, type: 3}
+  m_PrefabInstance: {fileID: 310828710}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &314592632
 PrefabInstance:
   m_ObjectHideFlags: 0
