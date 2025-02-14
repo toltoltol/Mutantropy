@@ -18,9 +18,9 @@ In Mutantropy, the player ventures through an abandoned facility and battles var
 
 ## Screenshots
 
-![First room with control scheme](Screenshots/screenshot1.png)
-![Fighting a mutant with an item dropped on the ground](Screenshots/screenshot2.png)
-![Dying to the boss mutant](Screenshots/screenshot3.png)
+![First room with control scheme](Assets/Screenshots/screenshot1.png)
+![Fighting a mutant with an item dropped on the ground](Assets/Screenshots/screenshot2.png)
+![Dying to the boss mutant](Assets/Screenshots/screenshot3.png)
 
 ## Known Issues
 
