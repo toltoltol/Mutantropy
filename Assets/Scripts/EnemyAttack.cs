@@ -62,7 +62,7 @@ public class EnemyAttack : MonoBehaviour {
 
     private void Start()
     {
-        Debug.Log("Sprite array length at start: " + animSprites.Length);
+//        Debug.Log("Sprite array length at start: " + animSprites.Length);
         animRenderer = GetComponent<SpriteRenderer>();
 
         enemyPeek = GetComponent<EnemyPeek>();
@@ -230,8 +230,8 @@ public class EnemyAttack : MonoBehaviour {
         {
             float timeSinceAnimStart = Time.timeSinceLevelLoad - timeAtAnimStart;
             int frameIndex = (int)(timeSinceAnimStart * framesPerSecond);
-            Debug.Log("Frame index: " + frameIndex);
-            Debug.Log("Sprite array length: " + animSprites.Length);
+//            Debug.Log("Frame index: " + frameIndex);
+  //          Debug.Log("Sprite array length: " + animSprites.Length);
             if (frameIndex < animSprites.Length)
             {
                 

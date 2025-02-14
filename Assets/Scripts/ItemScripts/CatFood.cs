@@ -7,7 +7,7 @@ namespace ItemScripts
     {
         private void Start()
         {
-            itemEffectDescription = "Ate catfood: -DMG +Atk.Speed +Proj.Speed +Movespeed";
+            itemEffectDescription = "Ate CatFood: -DMG +Atk.Speed +Proj.Speed +Movespeed";
         }
 
         public override void UseItem(PlayerAttributes playerAttributes)

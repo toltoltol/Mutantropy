@@ -4,7 +4,8 @@ public class EnemyFollow : MonoBehaviour
 {
     public Transform player;       // Reference to the player's Transform
     public float stopDistance = 1f; // Distance to stop from the player
-    public bool flip;
+   
+    private bool facingRight;
 
     private EnemyAttributes enemyAttributes;
     
@@ -16,6 +17,15 @@ public class EnemyFollow : MonoBehaviour
         if (enemyAttributes == null)
         {
             Debug.LogError("EnemyAttributes component is missing on this enemy.");
+        }
+
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player")?.transform;
+            if (player == null)
+            {
+                Debug.LogError("Player Transform not found! Make sure the player has the correct tag.");
+            }
         }
     }
 
@@ -34,25 +44,34 @@ public class EnemyFollow : MonoBehaviour
         // Move towards the player if beyond the stop distance
         if (distance > stopDistance)
         {
+            Debug.Log("Player beyond stop distance");
             // Calculate direction to the player
             Vector3 direction = (player.position - transform.position).normalized;
 
-            // Move the enemy in the direction of the player
-            transform.position += direction * enemyAttributes.moveSpeed * GameMaster.GetEnemyMoveSpeedMultiplier() * Time.deltaTime;
-           
+            // Flip sprite based on the horizontal direction
+            if (direction.x > 0 && !facingRight)
+            {
+                
+                Flip();
+            }
+            else if (direction.x < 0 && facingRight)
+            {
+                
+                Flip();
+            }
         }
 
         Vector3 scale = transform.localScale;
 
-        if (player.transform.position.x > transform.position.x)
-        {
-            scale.x = Mathf.Abs(scale.x) * -1 * (flip ? -1 : 1);
-        }
-        else
-        {
-            scale.x = Mathf.Abs(scale.x) * (flip ? -1 : 1);
-        }
+        
 
         transform.localScale = scale;
     }
+
+    void Flip()
+    {
+        facingRight = !facingRight;
+        transform.localScale = new Vector3(transform.localScale.x * (facingRight ? 1 : -1), transform.localScale.y, transform.localScale.z);
+    }
+
 }

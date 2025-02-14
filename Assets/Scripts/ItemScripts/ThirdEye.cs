@@ -6,7 +6,7 @@ namespace ItemScripts
     {
         private void Start()
         {
-            itemEffectDescription = "Ate ThirdEye: +Atk.Speed +Proj.Speed +Atk.Range";
+            itemEffectDescription = "Attained ThirdEye: +Atk.Speed +Proj.Speed +Atk.Range";
         }
         
         public override void UseItem(PlayerAttributes playerAttributes)

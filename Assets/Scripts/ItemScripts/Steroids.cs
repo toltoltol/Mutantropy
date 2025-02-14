@@ -6,7 +6,7 @@ namespace ItemScripts
     {
         private void Start()
         {
-            itemEffectDescription = "Ate Steroids: -Max Health +DMG +Atk.Speed +Atk.Range +Movespeed";
+            itemEffectDescription = "Used Steroids: -Max Health +DMG +Atk.Speed +Atk.Range +Movespeed";
         }
         
         public override void UseItem(PlayerAttributes playerAttributes)

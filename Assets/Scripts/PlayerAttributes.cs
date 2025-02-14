@@ -86,7 +86,7 @@ public class PlayerAttributes : MonoBehaviour
     {
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, minHealth, maxHealth);
-        Debug.Log($"Player took {damage} damage. Current health: {currentHealth}");
+ //       Debug.Log($"Player took {damage} damage. Current health: {currentHealth}");
 
         StartCoroutine(FlashRed());
 
