@@ -3491,6 +3491,58 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8433540163498240129, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: walkSprites.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8433540163498240129, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: attackSprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8433540163498240129, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: walkSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: -1975643519, guid: e7df8eb2d04b44d8184ed44a46370eb1, type: 3}
+    - target: {fileID: 8433540163498240129, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: walkSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: -491557611, guid: e7df8eb2d04b44d8184ed44a46370eb1, type: 3}
+    - target: {fileID: 8433540163498240129, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: walkSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: -479296210, guid: e7df8eb2d04b44d8184ed44a46370eb1, type: 3}
+    - target: {fileID: 8433540163498240129, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: walkSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: -1443751343, guid: e7df8eb2d04b44d8184ed44a46370eb1, type: 3}
+    - target: {fileID: 8433540163498240129, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: walkSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: -820738842, guid: e7df8eb2d04b44d8184ed44a46370eb1, type: 3}
+    - target: {fileID: 8433540163498240129, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: walkSprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 1181551823, guid: e7df8eb2d04b44d8184ed44a46370eb1, type: 3}
+    - target: {fileID: 8433540163498240129, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: walkSprites.Array.data[6]
+      value: 
+      objectReference: {fileID: -812391731, guid: e7df8eb2d04b44d8184ed44a46370eb1, type: 3}
+    - target: {fileID: 8433540163498240129, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: walkSprites.Array.data[7]
+      value: 
+      objectReference: {fileID: 1822804866, guid: e7df8eb2d04b44d8184ed44a46370eb1, type: 3}
+    - target: {fileID: 8433540163498240129, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: attackSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: -1501313103, guid: 4204fb23e78ff43beb712fe0b3d94c4a, type: 3}
+    - target: {fileID: 8433540163498240129, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: attackSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: -1178566090, guid: 4204fb23e78ff43beb712fe0b3d94c4a, type: 3}
+    - target: {fileID: 8433540163498240129, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
+      propertyPath: attackSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 772762261, guid: 4204fb23e78ff43beb712fe0b3d94c4a, type: 3}
     - target: {fileID: 8922885822935259551, guid: 6604375f8215b45ecb3ff4bf5912a94e, type: 3}
       propertyPath: healthPointToShow
       value: 0.35
@@ -3563,7 +3615,7 @@ AudioSource:
   m_GameObject: {fileID: 350135327}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: f4b97fc2040cf4566a46695fada4336c, type: 2}
   m_audioClip: {fileID: 8300000, guid: 5924f835e434942e480b166866c569d5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -13807,8 +13859,7 @@ Transform:
   m_Children:
   - {fileID: 822859835}
   - {fileID: 220257858}
-  - {fileID: 1740453082}
-  - {fileID: 1837122180}
+  - {fileID: 806402459}
   m_Father: {fileID: 1576478135}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1345530110
