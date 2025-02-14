@@ -22,7 +22,7 @@ namespace transition
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Enemy"))
+            if (other.CompareTag("Enemy") || other.CompareTag("Boss"))
             {
                 // Add the enemy to the list if not already added
                 if (!enemiesInRange.Contains(other.gameObject))
@@ -35,7 +35,7 @@ namespace transition
 
         void OnTriggerExit2D(Collider2D other)
         {
-            if (other.CompareTag("Enemy"))
+            if (other.CompareTag("Enemy") || other.CompareTag("Boss"))
             {
                 // Remove the enemy from the list when it leaves the collider
                 if (enemiesInRange.Contains(other.gameObject))
