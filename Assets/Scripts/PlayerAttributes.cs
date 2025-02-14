@@ -11,26 +11,26 @@ public class PlayerAttributes : MonoBehaviour
     // public static PlayerAttributes Instance;
 
     // Player stats with boundaries
-    public float maxHealth = 12f;
-    public float minHealth = 0f;
-    public float currentHealth = 3f;
+    public float maxHealth = 12.0f;
+    public float minHealth = 0.0f;
+    public float currentHealth = 3.0f;
 
-    public float attackPower = 1f;
+    public float attackPower = 1.0f;
     public float minAttackPower = 0.1f;
     public float maxAttackPower = 100f;
 
     //Attack cooldown = 1 over attack speed (inverse)
-    public float attackSpeed = 1f;
-    public float minAttackSpeed = 0.65f;
+    public float attackSpeed = 1.0f;
+    public float minAttackSpeed = 0.55f;
     public float maxAttackSpeed = 10.0f;
 
     //Measured in seconds the projectile exists for
     public float attackRange = 1.0f;
-    public float minAttackRange = 0.5f;
+    public float minAttackRange = 0.55f;
     public float maxAttackRange = 10.0f;
 
-    public float attackProjectileSpeed = 5.0f;
-    public float minAttackProjectileSpeed = 0.65f;
+    public float attackProjectileSpeed = 1.0f;
+    public float minAttackProjectileSpeed = 0.55f;
     public float maxAttackProjectileSpeed = 25.0f;
 
     public float moveSpeed = 1.0f;

@@ -17,7 +17,7 @@ namespace ItemScripts
 
                 playerAttributes.IncreaseAttackSpeed(strength / 4);
 
-                playerAttributes.IncreaseAttackRange(strength / 5);
+                playerAttributes.IncreaseAttackRange(strength / 10);
 
                 playerAttributes.IncreaseMoveSpeed(strength / 20);
             }
@@ -31,7 +31,7 @@ namespace ItemScripts
 
                 playerAttributes.IncreaseAttackSpeed(strength / 4);
 
-                playerAttributes.IncreaseAttackRange(strength / 5);
+                playerAttributes.IncreaseAttackRange(strength / 10);
 
                 playerAttributes.IncreaseMoveSpeed(strength / 20);
             }

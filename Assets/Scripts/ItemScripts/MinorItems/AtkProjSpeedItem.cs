@@ -14,7 +14,7 @@ namespace ItemScripts.MinorItems
 
         public override void UseItem(PlayerAttributes playerAttributes)
         {
-            playerAttributes.IncreaseAttackProjectileSpeed(strength / 10);
+            playerAttributes.IncreaseAttackProjectileSpeed(strength / 5);
 
             UpdateItemInfoBox();
 
