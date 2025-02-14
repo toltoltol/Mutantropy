@@ -8,6 +8,19 @@ Developers:
 - Max Wallace (walma865@student.otago.ac.nz)
 - Harrison Doran (dorha818@student.otago.ac.nz)
 
+### Control Scheme
+
+- WASD for movement
+- ARROW KEYS for shooting direction and to shoot
+
+## Known Issues
+
+- Enemy1 (green enemy with big arm) freezes for the first second or so when entering a room with it
+- Enemies can get stuck on each other or on nothing making them much easier to attack
+- 
+
+
+
 ## Local Development Environment
 
 Ensure you have installed Unity with the editor version 2022.3.10f1 or newer.
