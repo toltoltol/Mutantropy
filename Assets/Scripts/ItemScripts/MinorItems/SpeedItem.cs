@@ -12,7 +12,7 @@ namespace ItemScripts.MinorItems
 
         public override void UseItem(PlayerAttributes playerAttributes)
         {
-            playerAttributes.IncreaseMoveSpeed(strength / 10);
+            playerAttributes.IncreaseMoveSpeed(strength / 20);
 
             UpdateItemInfoBox();
             

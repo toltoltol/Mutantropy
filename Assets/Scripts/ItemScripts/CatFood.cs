@@ -18,7 +18,7 @@ namespace ItemScripts
             
             playerAttributes.IncreaseAttackProjectileSpeed(strength / 10);
 
-            playerAttributes.IncreaseMoveSpeed(strength / 10);
+            playerAttributes.IncreaseMoveSpeed(strength / 20);
 
             UpdateItemInfoBox();
             
