@@ -385,6 +385,9 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6705652931990581667, guid: 7f0fd71fe4d414878b3b2d80e78a4c6a, type: 3}
   autoShootProbability: 0.5
   fireCooldownTime: 8
+  meleeRange: 2
+  meleeShakeDuration: 0.4
+  meleeShakeMagnitude: 0.1
 --- !u!61 &132624006
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -444,7 +447,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1300353962}
   stopDistance: 1
-  flip: 1
 --- !u!1 &155041255
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,7 +2016,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1300353962}
   stopDistance: 1
-  flip: 1
 --- !u!50 &788501927
 Rigidbody2D:
   serializedVersion: 4
@@ -2070,6 +2071,9 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6705652931990581667, guid: 7f0fd71fe4d414878b3b2d80e78a4c6a, type: 3}
   autoShootProbability: 0.5
   fireCooldownTime: 2
+  meleeRange: 2
+  meleeShakeDuration: 0.4
+  meleeShakeMagnitude: 0.1
 --- !u!61 &788501929
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6637,6 +6641,9 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6705652931990581667, guid: 7f0fd71fe4d414878b3b2d80e78a4c6a, type: 3}
   autoShootProbability: 0.5
   fireCooldownTime: 8
+  meleeRange: 2
+  meleeShakeDuration: 0.4
+  meleeShakeMagnitude: 0.1
 --- !u!61 &1479586825
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6696,7 +6703,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1300353962}
   stopDistance: 1
-  flip: 1
 --- !u!1 &1650221325
 GameObject:
   m_ObjectHideFlags: 0
@@ -6948,6 +6954,10 @@ PrefabInstance:
     - target: {fileID: 1270611901317772111, guid: 5c0f427ccb9ae4220a006a4e853ba983, type: 3}
       propertyPath: m_Name
       value: GameplayUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270611901317772111, guid: 5c0f427ccb9ae4220a006a4e853ba983, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3278007701938537318, guid: 5c0f427ccb9ae4220a006a4e853ba983, type: 3}
       propertyPath: m_AnchorMax.x

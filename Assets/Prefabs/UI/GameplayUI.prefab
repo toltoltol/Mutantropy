@@ -1035,6 +1035,7 @@ MonoBehaviour:
   curHealthRect: {fileID: 8604877423097959131}
   sizeMultiplier: 32
   borderThickness: 2
+  deathSprite: {fileID: 472888831, guid: f417a739c3d124aa589800763ab1cd07, type: 3}
 --- !u!1 &2212692318024133494
 GameObject:
   m_ObjectHideFlags: 0

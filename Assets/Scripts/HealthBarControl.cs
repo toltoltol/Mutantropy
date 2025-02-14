@@ -1,10 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
+using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class HealthBarControl : MonoBehaviour
 {
     public GameObject restartUI;  // Reference to the GameObject tagged "Restart" (assigned in Inspector)
+    public DoorFadeEffect fadeEffect;
 
     private GameObject player; // Reference to the player GameObject
     private PlayerAttributes playerAttributes;
@@ -15,6 +16,8 @@ public class HealthBarControl : MonoBehaviour
 
     public float sizeMultiplier = 32f;
     public int borderThickness = 2;
+
+    public Sprite deathSprite;
 
     void Start()
     {
@@ -42,28 +45,72 @@ public class HealthBarControl : MonoBehaviour
         //TODO decide if this logic should go here or in playerAttributes or gamemaster
         if (playerAttributes.currentHealth <= 0)
         {
+            StartCoroutine(PlayerDeath());
 
-            Destroy(playerAttributes.gameObject);
+
+            //Destroy(playerAttributes.gameObject);
 
 
-       
-            Time.timeScale = 1f;
 
-            // Display the "Restart" UI
-            if (restartUI != null)
-            {
-                restartUI.SetActive(true);
-            }
-            Debug.Log("Player died. Loading GameOver scene...");
-            SceneManager.LoadScene("GameOver");
+            //Time.timeScale = 1f;
 
-            return;
+            //// Display the "Restart" UI
+            //if (restartUI != null)
+            //{
+            //    restartUI.SetActive(true);
+            //}
+            //Debug.Log("Player died. Loading GameOver scene...");
+            //SceneManager.LoadScene("GameOver");
+
+            //return;
         }
-        
-        
+
     }
-    
-    public void UpdateHealthBar(float currentHealth, float maxHealth)
+
+
+        private IEnumerator PlayerDeath()
+        {
+            if (player == null) yield break;
+
+            // Disable movement script
+            PlayerControl playerControl = player.GetComponent<PlayerControl>();
+            if (playerControl != null)
+            {
+                playerControl.enabled = false;
+            }
+
+            // Stop movement completely
+            Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.velocity = Vector2.zero;
+                rb.isKinematic = true;
+            }
+
+            SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null && deathSprite != null)
+            {
+                spriteRenderer.sprite = deathSprite;
+            }
+        
+            yield return new WaitForSeconds(2f);
+            // Trigger fade out, then load GameOver scene
+            if (fadeEffect != null)
+            {
+                fadeEffect.FadeOut(() =>
+                {
+                    SceneManager.LoadScene("GameOver");
+                });
+            }
+            else
+            {
+                SceneManager.LoadScene("GameOver");
+            }
+
+            yield return null;
+        }
+
+        public void UpdateHealthBar(float currentHealth, float maxHealth)
     {
         var infillWidth = maxHealth * sizeMultiplier;
         var borderWidth = infillWidth + borderThickness;
