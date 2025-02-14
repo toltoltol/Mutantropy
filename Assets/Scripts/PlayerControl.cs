@@ -4,12 +4,17 @@ using System.Collections;
 public class PlayerControl : MonoBehaviour
 {
 
-    // An array with the sprites used for animation
-    public Sprite[] animSprites;
+    // An array with the sprites used for walk animation
+    public Sprite[] walkSprites;
+
+    // An array with the sprites used for attack animation
+    public Sprite[] attackSprites;
+
 
     // Controls how fast to change the sprites 
     public float framesPerSecond;
-
+    public float attackDuration = 0.3f;
+    
     // Reference to the renderer of the sprite
     SpriteRenderer animRenderer;
 
@@ -20,9 +25,9 @@ public class PlayerControl : MonoBehaviour
 
     private Rigidbody2D rb;
     private PlayerAttributes playerAttributes;
-    // Direction of the movement
-    //private float movementDir;
-    //private float lastMovementDir = 0;
+
+    private bool isAttacking = false;
+    private float attackEndTime = 0f;
 
     private void Awake()
     {
@@ -76,22 +81,67 @@ public class PlayerControl : MonoBehaviour
     {
         if (playerAttributes == null) return;
 
+        HandleAttackInput();
+
+        if (isAttacking) return; // Prevent movement animation during attack
+
         if (isMoving)
         {
-            // Compute number of seconds since animation started playing
-            float timeSinceAnimStart = Time.timeSinceLevelLoad - timeAtAnimStart;
-
-            // Compute the index of the next frame
-            int frameIndex = (int)(timeSinceAnimStart * framesPerSecond) % animSprites.Length;
-
-            animRenderer.sprite = animSprites[frameIndex];
-
-
-
+            PlayWalkAnimation();
         }
-        else {
+        else
+        {
             timeAtAnimStart = 0f;
-            animRenderer.sprite = animSprites[0];
+            animRenderer.sprite = walkSprites[0]; // Idle frame
         }
+        //if (isMoving)
+        //{
+        //    // Compute number of seconds since animation started playing
+        //    float timeSinceAnimStart = Time.timeSinceLevelLoad - timeAtAnimStart;
+
+        //    // Compute the index of the next frame
+        //    int frameIndex = (int)(timeSinceAnimStart * framesPerSecond) % walkSprites.Length;
+
+        //    animRenderer.sprite = walkSprites[frameIndex];
+
+
+
+        //}
+        //else {
+        //    timeAtAnimStart = 0f;
+        //    animRenderer.sprite = walkSprites[0];
+        //}
+    }
+
+    private void PlayWalkAnimation()
+    {
+        float timeSinceAnimStart = Time.timeSinceLevelLoad - timeAtAnimStart;
+        int frameIndex = (int)(timeSinceAnimStart * framesPerSecond) % walkSprites.Length;
+        animRenderer.sprite = walkSprites[frameIndex];
+    }
+
+    private void HandleAttackInput()
+    {
+        if (Time.time < attackEndTime) return; // Wait until previous attack is done
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) ||
+            Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            StartCoroutine(AttackAnimation());
+        }
+    }
+
+    private IEnumerator AttackAnimation()
+    {
+        isAttacking = true;
+        attackEndTime = Time.time + attackDuration;
+
+        for (int i = 0; i < attackSprites.Length; i++)
+        {
+            animRenderer.sprite = attackSprites[i];
+            yield return new WaitForSeconds(1f / framesPerSecond);
+        }
+
+        isAttacking = false;
     }
 }
