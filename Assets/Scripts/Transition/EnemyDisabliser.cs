@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace transition
@@ -12,10 +14,15 @@ namespace transition
         private void Start()
         {
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
             foreach (GameObject enemy in enemies)
             {
                 UpdateMonoBehavoirs(false, enemy.GetComponents<MonoBehaviour>());
+            }
+            
+            GameObject[] bosses = GameObject.FindGameObjectsWithTag("Boss");
+            foreach (GameObject boss in bosses)
+            {
+                UpdateMonoBehavoirs(false, boss.GetComponents<MonoBehaviour>());
             }
         }
 
