@@ -1,7 +1,5 @@
 # Mutantropy
 
-Mutantropy is a top-down action rogue-like set in a post-apocalyptic future. The player must discover the origin of the mutant corruption and either use what they uncover to help discover a cure, or claim greater power for themselves.
-
 Developers:
 - James Maher (mahja805@student.otago.ac.nz)
 - Toby Oliver (olito413@student.otago.ac.nz)
@@ -12,24 +10,25 @@ Developers:
 
 - WASD for movement
 - ARROW KEYS for shooting direction and to shoot
+- ESC to pause
+
+## Game Overview
+
+In Mutantropy, the player ventures through an abandoned facility and battles various mutant enemies, picking up stat-enhancing items along the way. They must make their way through locked doors and dead ends to find the final room, where many mutagen crystals lie guarded by an extremely powerful mutant.
 
 ## Known Issues
 
 - Enemy1 (green enemy with big arm) freezes for the first second or so when entering a room with it
 - Enemies can get stuck on each other or on nothing making them much easier to attack
-- 
 
+## Credits
 
+Font: ThaleahFat, designed by Rick Hoppmann.  
+https://tinyworlds.itch.io/free-pixel-font-thaleah
 
-## Local Development Environment
+Music: 
+Piano Sonata No. 2 op. 32 3rd Movement - Chopin
+70s Euro Disco - John Bartmann (Free music archive)
+Untitled Game music from Zapsplat - https://www.zapsplat.com/music/game-music-action-mildly-aggressive-electro-breakbeat-growling-bass-synth-electronic-rhythms/
 
-Ensure you have installed Unity with the editor version 2022.3.10f1 or newer.
-
-To load the project into Unity Hub:
-
-1. Clone the repository  
-`git clone git@altitude.otago.ac.nz:team-asteria/hecate.git mutantropy`
-
-2. "Add project from disk" in Unity Hub
-
-3. Select the location in your filesystem where you have cloned the repository
+Sound FX from https://freesound.org/
