@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour
 {
+    //Reference to firepoint to move it
+    public Transform firepoint; 
 
     // An array with the sprites used for walk animation
     public Sprite[] walkSprites;
@@ -71,6 +73,9 @@ public class PlayerControl : MonoBehaviour
         if (horizontal != 0)
         {
             animRenderer.flipX = horizontal < 0;
+            
+            //flip firepoint
+            firepoint.localPosition = new Vector3(horizontal < 0 ? -Mathf.Abs(firepoint.localPosition.x) : Mathf.Abs(firepoint.localPosition.x), firepoint.localPosition.y, firepoint.localPosition.z);
         }
 
      
