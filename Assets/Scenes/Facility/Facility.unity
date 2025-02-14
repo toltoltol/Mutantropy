@@ -2982,6 +2982,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6555287960521963962, guid: 5c0f427ccb9ae4220a006a4e853ba983, type: 3}
+      propertyPath: fadeEffect
+      value: 
+      objectReference: {fileID: 541392571}
     - target: {fileID: 7766918496872616581, guid: 5c0f427ccb9ae4220a006a4e853ba983, type: 3}
       propertyPath: m_Camera
       value: 
